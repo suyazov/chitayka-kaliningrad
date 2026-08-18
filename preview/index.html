@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="assets/main.css?v=20260818-8">
+	<link rel="stylesheet" href="assets/main.css?v=20260818-9">
 </head>
 <body>
 <a class="skip-link" href="#main">К содержимому</a>
@@ -35,6 +35,7 @@
 				<li><a href="#prices">Тарифы</a></li>
 				<li><a href="#gallery">Фото</a></li>
 				<li><a href="/svedeniya-ob-obrazovatelnoj-organizacii/">Документы</a></li>
+				<li><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a></li>
 				<li><a href="#contacts">Контакты</a></li>
 			</ul>
 			<a class="btn btn--accent site-header__cta" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
@@ -453,7 +454,7 @@
 				</div>
 				<label class="consent">
 					<input type="checkbox" id="lead-consent" name="consent" required>
-					<span>Соглашаюсь на обработку персональных данных</span>
+					<span>Я согласен(на) с <a href="/politika-konfidencialnosti/" target="_blank" rel="noopener">Политикой обработки персональных данных</a></span>
 				</label>
 				<button class="btn btn--accent btn--lg lead__submit" type="submit">Отправить заявку</button>
 				<p class="lead__notice" id="leadNotice" hidden>Спасибо! Это демонстрационная версия сайта: заявка никуда не отправлена, данные не сохраняются.</p>
@@ -492,23 +493,15 @@
 	</section>
 
 	<section class="section section--tint documents" id="documents">
-		<div class="container documents__grid">
+		<div class="container documents__panel">
 			<div class="documents__content">
 				<p class="section__kicker">Открытость</p>
-				<h2>Документы и сведения о центре</h2>
-				<p>Основные сведения, реквизиты и обязательная информация собраны на отдельной странице. Документы публикуются только после официального предоставления центром.</p>
-				<a class="documents__question" href="mailto:clubchitayka@mail.ru">Задать вопрос: clubchitayka@mail.ru</a>
+				<h2>Открытая информация</h2>
+				<p>Сведения о центре, реквизиты и правила обработки персональных данных доступны на отдельных страницах.</p>
 			</div>
-			<div class="documents__card">
-				<span class="documents__icon" aria-hidden="true">✓</span>
-				<h3>Всё в одном разделе</h3>
-				<ul>
-					<li>основные сведения и контакты;</li>
-					<li>образовательные программы;</li>
-					<li>документы и реквизиты;</li>
-					<li>материально-техническое обеспечение.</li>
-				</ul>
-				<a class="btn btn--accent" href="/svedeniya-ob-obrazovatelnoj-organizacii/">Открыть сведения</a>
+			<div class="documents__actions">
+				<a class="btn btn--accent" href="/svedeniya-ob-obrazovatelnoj-organizacii/">Сведения о центре</a>
+				<a class="btn btn--ghost" href="/politika-konfidencialnosti/">Политика конфиденциальности</a>
 			</div>
 		</div>
 	</section>
@@ -548,6 +541,6 @@
 	</div>
 </footer>
 
-<script src="assets/main.js?v=20260818-6" defer></script>
+<script src="assets/main.js?v=20260818-9" defer></script>
 </body>
 </html>
