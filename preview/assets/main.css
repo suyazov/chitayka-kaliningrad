@@ -1298,10 +1298,28 @@ a:hover {
 	.price-card--featured .price-card__note { grid-area: note; margin-bottom: 0; }
 	.price-card--featured .btn { grid-area: action; align-self: center; }
 
-	.prices__courses .price-list,
-	.prices__group > .price-list {
+	.prices__courses .price-list {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 14px;
+	}
+
+	.prices__group > .price-list {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 14px;
+	}
+
+	.prices__group > .price-list > .price-row {
+		grid-column: span 3;
+	}
+
+	.prices__group > .price-list > .price-row:nth-last-child(-n + 3) {
+		grid-column: span 2;
+	}
+
+	.prices__group > .prices__group-cta {
+		display: flex;
+		width: max-content;
+		margin-inline: auto;
 	}
 
 	.price-row {
