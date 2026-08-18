@@ -22,6 +22,80 @@
 		});
 	}
 
+	/* --- Фотослайдер «Наш центр» --- */
+	var slider = document.getElementById('gallerySlider');
+
+	if (slider) {
+		var track = slider.querySelector('.slider__track');
+		var slides = slider.querySelectorAll('.slider__slide');
+		var prevBtn = slider.querySelector('.slider__btn--prev');
+		var nextBtn = slider.querySelector('.slider__btn--next');
+		var counter = slider.querySelector('.slider__counter');
+		var current = 0;
+		var total = slides.length;
+
+		function goTo(index) {
+			if (total === 0) {
+				return;
+			}
+			if (index < 0) {
+				index = total - 1;
+			}
+			if (index >= total) {
+				index = 0;
+			}
+			current = index;
+			track.style.transform = 'translateX(' + (-100 * current) + '%)';
+			slides.forEach(function (slide, i) {
+				slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+			});
+			if (counter) {
+				counter.textContent = (current + 1) + ' / ' + total;
+			}
+		}
+
+		if (prevBtn) {
+			prevBtn.addEventListener('click', function () {
+				goTo(current - 1);
+			});
+		}
+
+		if (nextBtn) {
+			nextBtn.addEventListener('click', function () {
+				goTo(current + 1);
+			});
+		}
+
+		slider.addEventListener('keydown', function (event) {
+			if (event.key === 'ArrowLeft') {
+				event.preventDefault();
+				goTo(current - 1);
+			} else if (event.key === 'ArrowRight') {
+				event.preventDefault();
+				goTo(current + 1);
+			}
+		});
+
+		var touchStartX = null;
+
+		slider.addEventListener('touchstart', function (event) {
+			touchStartX = event.changedTouches[0].clientX;
+		}, { passive: true });
+
+		slider.addEventListener('touchend', function (event) {
+			if (touchStartX === null) {
+				return;
+			}
+			var deltaX = event.changedTouches[0].clientX - touchStartX;
+			touchStartX = null;
+			if (Math.abs(deltaX) > 40) {
+				goTo(current + (deltaX < 0 ? 1 : -1));
+			}
+		}, { passive: true });
+
+		goTo(0);
+	}
+
 	/* --- CTA-кнопки: подставляем выбранную тему в форму --- */
 	var topicSelect = document.getElementById('lead-topic');
 
