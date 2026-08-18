@@ -274,6 +274,28 @@ a:hover {
 	align-self: flex-start;
 }
 
+.site-header__contacts {
+	display: none;
+}
+
+.site-header__call {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	margin-left: auto;
+	background: var(--purple-soft);
+	border-radius: 12px;
+	color: var(--purple-dark);
+}
+
+.site-header__call:hover {
+	background: var(--purple);
+	color: var(--white);
+	text-decoration: none;
+}
+
 /* --------------------------------------------------------------------------
    Hero
    -------------------------------------------------------------------------- */
@@ -917,6 +939,14 @@ a:hover {
 	color: var(--purple-dark);
 }
 
+.contacts__line {
+	font-weight: 700;
+}
+
+.contacts__line a {
+	font-weight: 800;
+}
+
 .contacts__card {
 	padding: 26px 24px;
 	background: var(--purple-soft);
@@ -978,6 +1008,15 @@ a:hover {
 	color: var(--white);
 }
 
+.site-footer__contacts a {
+	color: var(--white);
+	font-weight: 800;
+}
+
+.site-footer__contacts a:hover {
+	color: var(--yellow);
+}
+
 .site-footer__note {
 	font-size: 0.9rem;
 	color: #948bb5;
@@ -1028,6 +1067,35 @@ a:hover {
 @media (min-width: 960px) {
 	.site-header__toggle {
 		display: none;
+	}
+
+	.site-header__call {
+		display: none;
+	}
+
+	.site-header__contacts {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 2px;
+		margin-left: auto;
+		line-height: 1.3;
+	}
+
+	.site-header__phone {
+		font-weight: 900;
+		font-size: 1.05rem;
+		color: var(--purple-dark);
+	}
+
+	.site-header__vk {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--ink-soft);
+	}
+
+	.site-header__vk:hover {
+		color: var(--purple-dark);
 	}
 
 	.site-header__nav {
