@@ -696,7 +696,7 @@ a:hover {
 	gap: 20px;
 }
 
-.adv {
+.benefit-card {
 	padding: 26px 24px;
 	min-height: 200px;
 	background: var(--white);
@@ -706,12 +706,12 @@ a:hover {
 	transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.adv:hover {
+.benefit-card:hover {
 	box-shadow: var(--shadow-strong);
 	transform: translateY(-3px);
 }
 
-.adv__icon {
+.benefit-card__icon {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -722,17 +722,17 @@ a:hover {
 	border-radius: 14px;
 }
 
-.adv__icon--purple { background: var(--purple-soft); }
-.adv__icon--mint { background: var(--mint-soft); }
-.adv__icon--yellow { background: var(--yellow-soft); }
-.adv__icon--coral { background: var(--coral-soft); }
+.benefit-card__icon--purple { background: var(--purple-soft); }
+.benefit-card__icon--mint { background: var(--mint-soft); }
+.benefit-card__icon--yellow { background: var(--yellow-soft); }
+.benefit-card__icon--coral { background: var(--coral-soft); }
 
-.adv h3 {
+.benefit-card h3 {
 	font-size: 1.05rem;
 	margin-bottom: 0.35em;
 }
 
-.adv p {
+.benefit-card p {
 	margin: 0;
 	font-size: 0.93rem;
 	color: var(--ink-soft);
