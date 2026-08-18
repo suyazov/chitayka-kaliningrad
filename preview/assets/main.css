@@ -1165,11 +1165,12 @@ a:hover {
 		display: none;
 	}
 
-	.site-header__phone {
-		font-weight: 900;
-		font-size: 1.05rem;
-		color: var(--purple-dark);
-	}
+.site-header__phone {
+	font-weight: 900;
+	font-size: 1.05rem;
+	color: var(--purple-dark);
+	white-space: nowrap;
+}
 
 	.site-header__vk {
 		font-size: 0.85rem;
