@@ -1327,6 +1327,8 @@ a:hover {
 	}
 
 	.hero__content {
+		position: relative;
+		z-index: 2;
 		padding-block: 56px;
 	}
 
@@ -1336,6 +1338,18 @@ a:hover {
 		right: 0;
 		bottom: 0;
 		width: 50vw;
+	}
+
+	.hero__media::before {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		bottom: 0;
+		left: -1px;
+		width: clamp(80px, 9vw, 150px);
+		background: linear-gradient(90deg, var(--cream) 0%, rgba(255, 249, 240, 0.88) 24%, rgba(255, 249, 240, 0) 100%);
+		pointer-events: none;
 	}
 
 	.hero__media img {
