@@ -1525,52 +1525,6 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Documents
-   -------------------------------------------------------------------------- */
-
-.documents {
-	padding-block: clamp(42px, 5vw, 68px);
-}
-
-.documents__panel {
-	display: grid;
-	gap: 24px;
-	align-items: center;
-	padding: clamp(26px, 4vw, 44px);
-	background: var(--white);
-	border: 1px solid var(--line);
-	border-radius: var(--radius-lg);
-	box-shadow: var(--shadow-strong);
-}
-
-.documents__content h2 {
-	margin-bottom: 0.35em;
-}
-
-.documents__content p {
-	max-width: 650px;
-	margin-bottom: 0;
-	color: var(--ink-soft);
-}
-
-.documents__actions {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-}
-
-@media (min-width: 840px) {
-	.documents__panel {
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 40px;
-	}
-
-	.documents__actions {
-		justify-content: flex-end;
-	}
-}
-
-/* --------------------------------------------------------------------------
    Tablet (additions)
    -------------------------------------------------------------------------- */
 
