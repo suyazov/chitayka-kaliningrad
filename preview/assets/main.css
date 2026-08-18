@@ -581,6 +581,7 @@ a:hover {
 		radial-gradient(600px 300px at 100% 0%, rgba(255, 201, 60, 0.18) 0%, rgba(255, 201, 60, 0) 60%),
 		var(--purple-dark);
 	color: var(--purple-soft);
+	padding-block: clamp(52px, 5vw, 76px);
 }
 
 .prodlenka h2,
@@ -606,6 +607,8 @@ a:hover {
 }
 
 .shift {
+	display: flex;
+	flex-direction: column;
 	padding: 20px;
 	background: rgba(255, 255, 255, 0.08);
 	border: 1px solid rgba(255, 255, 255, 0.16);
@@ -620,6 +623,7 @@ a:hover {
 }
 
 .shift p:last-child {
+	flex: 1;
 	margin-bottom: 0;
 	color: #d9cefa;
 	font-size: 0.95rem;
@@ -631,7 +635,8 @@ a:hover {
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-strong);
 	color: var(--ink);
-	align-self: start;
+	display: flex;
+	flex-direction: column;
 }
 
 .prodlenka__benefits h3 {
@@ -645,6 +650,8 @@ a:hover {
 	padding: 0;
 	display: grid;
 	gap: 14px;
+	flex: 1;
+	align-content: space-between;
 }
 
 .prodlenka__benefits li {
@@ -1245,8 +1252,22 @@ a:hover {
 
 	.prodlenka__grid {
 		grid-template-columns: 1.3fr 1fr;
-		align-items: start;
+		align-items: stretch;
 		gap: 48px;
+	}
+
+	.prodlenka__content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.prodlenka__shifts {
+		flex: 1;
+		align-items: stretch;
+	}
+
+	.prodlenka__content > .btn {
+		align-self: flex-start;
 	}
 
 	.advantages__grid {
