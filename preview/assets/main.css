@@ -302,6 +302,7 @@ a:hover {
    -------------------------------------------------------------------------- */
 
 .hero {
+	position: relative;
 	background:
 		radial-gradient(700px 320px at 85% -10%, var(--yellow-soft) 0%, rgba(255, 243, 214, 0) 70%),
 		var(--cream);
@@ -1241,17 +1242,40 @@ a:hover {
 	}
 
 	.hero {
-		padding: 72px 0 80px;
+		display: flex;
+		align-items: center;
+		min-height: calc(100svh - 72px);
+		padding: 0;
 	}
 
 	.hero__grid {
-		grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+		grid-template-columns: minmax(0, 46%);
 		align-items: center;
-		gap: 48px;
+		min-height: calc(100svh - 72px);
+		gap: 0;
+	}
+
+	.hero__content {
+		padding-block: 56px;
+	}
+
+	.hero__media {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 50vw;
 	}
 
 	.hero__media img {
+		width: 100%;
+		height: 100%;
+		max-width: none;
 		margin: 0;
+		object-fit: cover;
+		object-position: 68% center;
+		border-radius: 0;
+		box-shadow: none;
 	}
 
 	.directions__grid {
