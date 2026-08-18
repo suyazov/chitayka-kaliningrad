@@ -728,9 +728,23 @@ a:hover {
    Prices
    -------------------------------------------------------------------------- */
 
-.prices__grid {
+.prices__group {
+	margin-top: 36px;
+}
+
+.prices__group:first-of-type {
+	margin-top: 0;
+}
+
+.prices__group-title {
+	font-size: 1.3rem;
+	margin-bottom: 18px;
+}
+
+.prices__courses {
 	display: grid;
 	gap: 18px;
+	align-items: start;
 }
 
 .price-card {
@@ -746,10 +760,11 @@ a:hover {
 .price-card--featured {
 	border: 2px solid var(--coral);
 	position: relative;
+	box-shadow: var(--shadow-strong);
 }
 
 .price-card--featured::before {
-	content: "Популярный старт";
+	content: "Рекомендуем";
 	position: absolute;
 	top: -14px;
 	left: 20px;
@@ -761,18 +776,32 @@ a:hover {
 	border-radius: 999px;
 }
 
-.price-card__for {
-	margin-bottom: 0.8em;
-	font-size: 0.85rem;
+.price-card h4 {
+	margin: 0 0 0.5em;
+	font-size: 1.35rem;
+	font-weight: 900;
+	line-height: 1.2;
+	color: var(--ink);
+}
+
+.price-card__value {
+	margin-bottom: 0.2em;
+	font-size: 1.9rem;
+	font-weight: 900;
+	color: var(--purple-dark);
+}
+
+.price-card__per {
+	font-size: 1rem;
 	font-weight: 800;
 	color: var(--ink-soft);
 }
 
-.price-card__value {
-	margin-bottom: 0.5em;
-	font-size: 1.3rem;
-	font-weight: 900;
-	color: var(--purple-dark);
+.price-card__meta {
+	margin-bottom: 0.8em;
+	font-size: 0.9rem;
+	font-weight: 800;
+	color: var(--mint-dark);
 }
 
 .price-card__note {
@@ -784,6 +813,57 @@ a:hover {
 .price-card .btn {
 	margin-top: 14px;
 	align-self: flex-start;
+}
+
+.price-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 12px;
+}
+
+.price-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 16px 18px;
+	background: var(--white);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.price-row__name {
+	margin: 0;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.price-row__meta {
+	margin: 2px 0 0;
+	font-size: 0.88rem;
+	color: var(--ink-soft);
+}
+
+.price-row__value {
+	margin: 0;
+	font-size: 1.15rem;
+	font-weight: 900;
+	color: var(--purple-dark);
+	white-space: nowrap;
+	text-align: right;
+}
+
+.price-row__value span {
+	font-size: 0.85rem;
+	font-weight: 800;
+	color: var(--ink-soft);
+}
+
+.prices__group-cta {
+	margin-top: 18px;
 }
 
 .prices__note {
@@ -1051,8 +1131,8 @@ a:hover {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.prices__grid {
-		grid-template-columns: repeat(3, 1fr);
+	.price-row {
+		padding: 18px 22px;
 	}
 
 	.site-footer__grid {
@@ -1153,6 +1233,15 @@ a:hover {
 
 	.advantages__grid {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.prices__courses {
+		grid-template-columns: 1fr 1.4fr;
+		gap: 28px;
+	}
+
+	.prices__group-title {
+		font-size: 1.5rem;
 	}
 
 	.lead__grid {
