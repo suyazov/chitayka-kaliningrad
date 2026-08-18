@@ -1,0 +1,16 @@
+# WordPress core / uploads (в репозитории только тема)
+wp-content/uploads/
+wp-content/plugins/
+wp-content/upgrade/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs and temp
+*.log
+*.tmp
+node_modules/
