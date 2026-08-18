@@ -1,35 +1,92 @@
-/* Preview-сборка «Читай-ка»: мобильное меню, выбор CTA, демо-форма без отправки. */
+/* Детский центр «Читай-ка» — preview scripts.
+   Демонстрационная версия: форма ничего не отправляет,
+   после submit показывает demo-уведомление. */
 (function () {
 	'use strict';
 
-	// Мобильное меню.
+	/* --- Мобильное меню --- */
 	var toggle = document.querySelector('.site-header__toggle');
 	var nav = document.querySelector('.site-header__nav');
+
 	if (toggle && nav) {
 		toggle.addEventListener('click', function () {
 			var open = nav.classList.toggle('is-open');
 			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 		});
+
+		nav.addEventListener('click', function (event) {
+			if (event.target.closest('a')) {
+				nav.classList.remove('is-open');
+				toggle.setAttribute('aria-expanded', 'false');
+			}
+		});
 	}
 
-	// Кнопки CTA в hero выбирают соответствующий вариант в форме.
-	var select = document.getElementById('lead-cta');
-	document.querySelectorAll('[data-cta]').forEach(function (btn) {
-		btn.addEventListener('click', function () {
-			if (select) {
-				select.value = btn.getAttribute('data-cta');
+	/* --- CTA-кнопки: подставляем выбранную тему в форму --- */
+	var topicSelect = document.getElementById('lead-topic');
+
+	document.querySelectorAll('[data-cta]').forEach(function (link) {
+		link.addEventListener('click', function () {
+			if (topicSelect && link.dataset.cta) {
+				topicSelect.value = link.dataset.cta;
 			}
 		});
 	});
 
-	// Демонстрационная форма: данные никуда не отправляются.
-	var form = document.querySelector('.lead-form');
-	var notice = document.getElementById('lead-notice');
-	if (form && notice) {
-		form.addEventListener('submit', function (event) {
-			event.preventDefault();
-			notice.hidden = false;
-			notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-		});
+	/* --- Форма заявки: demo-режим, без отправки данных --- */
+	var form = document.getElementById('leadForm');
+	var notice = document.getElementById('leadNotice');
+
+	if (!form || !notice) {
+		return;
 	}
+
+	function markValidity(field) {
+		if (field.checkValidity()) {
+			field.classList.remove('is-invalid');
+		} else {
+			field.classList.add('is-invalid');
+		}
+	}
+
+	var requiredFields = form.querySelectorAll('[required]');
+
+	requiredFields.forEach(function (field) {
+		field.addEventListener('input', function () {
+			markValidity(field);
+		});
+		field.addEventListener('change', function () {
+			markValidity(field);
+		});
+	});
+
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+
+		/* Honeypot: тихо игнорируем ботов. */
+		var honeypot = form.querySelector('#lead-company');
+		if (honeypot && honeypot.value !== '') {
+			return;
+		}
+
+		var valid = true;
+		requiredFields.forEach(function (field) {
+			markValidity(field);
+			if (!field.checkValidity()) {
+				valid = false;
+			}
+		});
+
+		if (!valid) {
+			var firstInvalid = form.querySelector('.is-invalid');
+			if (firstInvalid) {
+				firstInvalid.focus();
+			}
+			return;
+		}
+
+		notice.hidden = false;
+		form.reset();
+		notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+	});
 })();

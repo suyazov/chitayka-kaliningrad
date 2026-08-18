@@ -3,8 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Детский центр «Читай-ка» — демонстрационная версия</title>
-	<meta name="description" content="Демонстрационная версия сайта детского центра «Читай-ка», Калининград, ул. Аксакова 131.">
+	<title>Детский центр «Читай-ка» — Калининград, ул. Аксакова 131</title>
+	<meta name="description" content="Детский центр «Читай-ка» в Калининграде: обучение чтению, подготовка к школе, умная продлёнка для школьников 1–4 классов. ул. Аксакова 131.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
@@ -12,199 +15,331 @@
 
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href="#">
+		<a class="site-header__brand" href="#top" aria-label="Детский центр «Читай-ка» — на главную">
 			<img class="site-header__logo" src="assets/logo-chitayka.png" alt="Детский центр «Читай-ка»">
 		</a>
-		<button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">Меню</button>
+		<button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+			<span class="site-header__toggle-bar"></span>
+			<span class="site-header__toggle-bar"></span>
+			<span class="site-header__toggle-bar"></span>
+			<span class="visually-hidden">Меню</span>
+		</button>
 		<nav class="site-header__nav" aria-label="Основное меню">
 			<ul id="primary-menu">
-				<li><a href="#groups">Группы</a></li>
 				<li><a href="#directions">Направления</a></li>
+				<li><a href="#programs">Программы</a></li>
+				<li><a href="#prodlenka">Продлёнка</a></li>
 				<li><a href="#prices">Тарифы</a></li>
 				<li><a href="#contacts">Контакты</a></li>
 			</ul>
+			<a class="btn btn--accent site-header__cta" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
 		</nav>
 	</div>
 </header>
 
 <main id="main" class="site-main">
 
-	<section class="hero">
-		<div class="container">
-			<p class="demo-banner">Демонстрационная версия сайта</p>
-			<h1>Детский центр «Читай-ка»</h1>
-			<p class="hero__lead">Учим читать с удовольствием. Калининград, ул. Аксакова 131.</p>
-			<div class="hero__cta">
-				<a class="btn btn--primary" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
-				<a class="btn" href="#lead-form" data-cta="zanyatie">Пробное занятие</a>
-				<a class="btn" href="#lead-form" data-cta="den">Пробный день</a>
+	<section class="hero" id="top">
+		<div class="container hero__grid">
+			<div class="hero__content">
+				<p class="hero__badge">Калининград · ул. Аксакова 131</p>
+				<h1>Научим ребёнка читать с&nbsp;удовольствием</h1>
+				<p class="hero__lead">Детский центр «Читай-ка»: обучение чтению, подготовка к школе и умная продлёнка для учеников 1–4 классов. Маленькие группы, бережные педагоги, понятный результат.</p>
+				<div class="hero__cta">
+					<a class="btn btn--accent btn--lg" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
+					<a class="btn btn--ghost btn--lg" href="#lead-form" data-cta="zanyatie">Пробное занятие</a>
+					<a class="btn btn--ghost btn--lg" href="#lead-form" data-cta="den">Пробный день</a>
+				</div>
+				<ul class="hero__points">
+					<li>Группы от 4 лет до 4 класса</li>
+					<li>Диагностика навыков перед стартом</li>
+					<li>Продлёнка до вечера с домашними заданиями</li>
+				</ul>
+			</div>
+			<div class="hero__media">
+				<img src="assets/hero-illustration-v2.png" alt="Дети читают книги в центре «Читай-ка»" width="640" height="520">
 			</div>
 		</div>
 	</section>
 
-	<section class="groups" id="groups">
+	<section class="section directions" id="directions">
 		<div class="container">
-			<h2>Группы</h2>
-			<div class="cards">
-				<div class="card">
-					<h3>4–6 лет</h3>
-					<p>Дошкольная группа: первые шаги в чтении и подготовка к школе.</p>
-				</div>
-				<div class="card">
-					<h3>7–9 лет</h3>
-					<p>Младшие школьники: техника чтения, понимание текста, продлёнка.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="directions" id="directions">
-		<div class="container">
-			<h2>Направления</h2>
-			<div class="cards">
-				<div class="card">
+			<header class="section__head">
+				<p class="section__kicker">Чем мы занимаемся</p>
+				<h2>Направления центра</h2>
+				<p class="section__sub">Три ключевых направления, которые закрывают главные задачи дошкольника и младшего школьника.</p>
+			</header>
+			<div class="directions__grid">
+				<article class="dir-card dir-card--purple">
+					<span class="dir-card__icon" aria-hidden="true">📖</span>
 					<h3>Обучение чтению</h3>
-					<p>От слогов к уверенному чтению и пониманию текста.</p>
-				</div>
-				<div class="card">
-					<h3>Подготовка к школе (ПКШ)</h3>
-					<p>Комплексная подготовка дошкольников к первому классу.</p>
-				</div>
-				<div class="card">
-					<h3>Продлёнка</h3>
-					<p>Группа продлённого дня для школьников.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="prices" id="prices">
-		<div class="container">
-			<h2>Тарифы</h2>
-			<p class="prices__note"><strong>Цены требуют подтверждения актуальности у клиента.</strong></p>
-			<div class="cards">
-				<div class="card">
-					<h3>Обучение чтению</h3>
-					<p class="card__price">XXX ₽ / занятие</p>
-				</div>
-				<div class="card">
+					<p>От первых слогов до беглого осмысленного чтения. Развиваем технику, понимание текста и любовь к книгам.</p>
+					<a class="dir-card__link" href="#lead-form" data-cta="zanyatie">Записаться на пробное занятие</a>
+				</article>
+				<article class="dir-card dir-card--mint">
+					<span class="dir-card__icon" aria-hidden="true">🎒</span>
 					<h3>Подготовка к школе</h3>
-					<p class="card__price">XXX ₽ / месяц</p>
+					<p>Полный курс подготовки к 1 классу: чтение, счёт, логика, речь, письмо и навыки самостоятельности.</p>
+					<a class="dir-card__link" href="#lead-form" data-cta="diagnostika">Пройти диагностику готовности</a>
+				</article>
+				<article class="dir-card dir-card--coral">
+					<span class="dir-card__icon" aria-hidden="true">🏫</span>
+					<h3>Умная продлёнка</h3>
+					<p>Продлённый день для школьников 1–4 классов: уроки сделаны, развивающие занятия, прогулки и отдых.</p>
+					<a class="dir-card__link" href="#prodlenka">Подробнее о продлёнке</a>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--tint programs" id="programs">
+		<div class="container">
+			<header class="section__head">
+				<p class="section__kicker">Для каждого возраста</p>
+				<h2>Возрастные программы</h2>
+				<p class="section__sub">Программа подстраивается под возраст и текущий уровень ребёнка — начинаем с бесплатной диагностики.</p>
+			</header>
+			<div class="programs__grid">
+				<article class="program program--yellow">
+					<p class="program__age">4–5 лет</p>
+					<h3>Первые шаги к чтению</h3>
+					<ul>
+						<li>Звуки, буквы и слоги в игровой форме</li>
+						<li>Развитие речи и словарного запаса</li>
+						<li>Мелкая моторика и подготовка руки к письму</li>
+					</ul>
+				</article>
+				<article class="program program--mint">
+					<p class="program__age">5–6 лет</p>
+					<h3>Уверенное чтение</h3>
+					<ul>
+						<li>Чтение слов и коротких текстов</li>
+						<li>Логика, счёт и математические представления</li>
+						<li>Понимание прочитанного и пересказ</li>
+					</ul>
+				</article>
+				<article class="program program--purple">
+					<p class="program__age">6–7 лет</p>
+					<h3>Подготовка к школе</h3>
+					<ul>
+						<li>Беглое чтение и основы письма</li>
+						<li>Счёт, задачи, пространственное мышление</li>
+						<li>Самостоятельность и школьные навыки</li>
+					</ul>
+				</article>
+				<article class="program program--coral">
+					<p class="program__age">1–4 класс</p>
+					<h3>Школьникам</h3>
+					<ul>
+						<li>Техника и скорость чтения, понимание текста</li>
+						<li>Помощь с домашними заданиями на продлёнке</li>
+						<li>Развивающие занятия после уроков</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section prodlenka" id="prodlenka">
+		<div class="container prodlenka__grid">
+			<div class="prodlenka__content">
+				<p class="section__kicker section__kicker--light">Для занятых родителей</p>
+				<h2>Умная продлёнка для 1–4 классов</h2>
+				<p class="prodlenka__lead">Ребёнок под присмотром до вечера: домашние задания выполнены с педагогом, а остальное время — отдых, игры и развивающие занятия в удобном центре на Аксакова 131.</p>
+				<div class="prodlenka__shifts">
+					<div class="shift">
+						<h3>Первая смена</h3>
+						<p class="shift__time">После утренних уроков · до 17:00</p>
+						<p>Встречаем после школы, обедаем, разбираем домашние задания и оставляем время на игры и чтение.</p>
+					</div>
+					<div class="shift">
+						<h3>Вторая смена</h3>
+						<p class="shift__time">После дневных уроков · до 19:00</p>
+						<p>Подходит тем, кто учится во вторую смену или задерживается на секциях: день выстроен под расписание ребёнка.</p>
+					</div>
 				</div>
-				<div class="card">
-					<h3>Продлёнка</h3>
-					<p class="card__price">XXX ₽ / месяц</p>
+				<a class="btn btn--accent btn--lg" href="#lead-form" data-cta="den">Записаться на пробный день</a>
+			</div>
+			<aside class="prodlenka__benefits" aria-label="Выгоды продлёнки">
+				<h3>Что входит</h3>
+				<ul>
+					<li><strong>Уроки сделаны.</strong> Домашние задания под контролем педагога — вечер свободен для семьи.</li>
+					<li><strong>Питание и отдых.</strong> Обед, полдник и спокойное время для восстановления.</li>
+					<li><strong>Развитие каждый день.</strong> Чтение, логика, творчество и настольные игры.</li>
+					<li><strong>Безопасность.</strong> Ребёнок в центре под присмотром, родители спокойны.</li>
+					<li><strong>Рядом с домом.</strong> Ул. Аксакова 131 — удобно для района.</li>
+				</ul>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section advantages" id="advantages">
+		<div class="container">
+			<header class="section__head">
+				<p class="section__kicker">Почему «Читай-ка»</p>
+				<h2>Наши преимущества</h2>
+			</header>
+			<div class="advantages__grid">
+				<div class="adv">
+					<span class="adv__icon adv__icon--purple" aria-hidden="true">👥</span>
+					<h3>Маленькие группы</h3>
+					<p>Педагог видит каждого ребёнка и успевает уделить внимание всем.</p>
+				</div>
+				<div class="adv">
+					<span class="adv__icon adv__icon--mint" aria-hidden="true">🎯</span>
+					<h3>Старт с диагностики</h3>
+					<p>Определяем уровень и цели до начала занятий — программа честная и посильная.</p>
+				</div>
+				<div class="adv">
+					<span class="adv__icon adv__icon--yellow" aria-hidden="true">📚</span>
+					<h3>Фокус на чтении</h3>
+					<p>Чтение — база всех школьных предметов. Мы делаем её прочной.</p>
+				</div>
+				<div class="adv">
+					<span class="adv__icon adv__icon--coral" aria-hidden="true">💛</span>
+					<h3>Бережная атмосфера</h3>
+					<p>Без давления и сравнений: дети занимаются с интересом и приходят снова.</p>
+				</div>
+				<div class="adv">
+					<span class="adv__icon adv__icon--purple" aria-hidden="true">📍</span>
+					<h3>Удобное расположение</h3>
+					<p>Калининград, ул. Аксакова 131 — легко добираться пешком и на транспорте.</p>
+				</div>
+				<div class="adv">
+					<span class="adv__icon adv__icon--mint" aria-hidden="true">🗓️</span>
+					<h3>Гибкие форматы</h3>
+					<p>Диагностика, пробное занятие или пробный день — выберите удобный старт.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="teachers">
+	<section class="section section--tint prices" id="prices">
 		<div class="container">
-			<h2>Педагоги</h2>
-			<div class="cards">
-				<div class="card card--placeholder">
-					<h3>[ИМЯ ПЕДАГОГА]</h3>
-					<p>[ФОТО] · [ОПЫТ И КВАЛИФИКАЦИЯ]</p>
-				</div>
-				<div class="card card--placeholder">
-					<h3>[ИМЯ ПЕДАГОГА]</h3>
-					<p>[ФОТО] · [ОПЫТ И КВАЛИФИКАЦИЯ]</p>
-				</div>
-				<div class="card card--placeholder">
-					<h3>[ИМЯ ПЕДАГОГА]</h3>
-					<p>[ФОТО] · [ОПЫТ И КВАЛИФИКАЦИЯ]</p>
-				</div>
+			<header class="section__head">
+				<p class="section__kicker">Тарифы</p>
+				<h2>Стоимость занятий</h2>
+				<p class="section__sub">Итоговая стоимость зависит от формата и расписания — подберём вариант на бесплатной диагностике.</p>
+			</header>
+			<div class="prices__grid">
+				<article class="price-card">
+					<h3>Обучение чтению</h3>
+					<p class="price-card__for">4–7 лет</p>
+					<p class="price-card__value">Стоимость уточняйте</p>
+					<p class="price-card__note">Абонементы на групповые и индивидуальные занятия.</p>
+					<a class="btn btn--ghost" href="#lead-form" data-cta="zanyatie">Пробное занятие</a>
+				</article>
+				<article class="price-card price-card--featured">
+					<h3>Подготовка к школе</h3>
+					<p class="price-card__for">5–7 лет</p>
+					<p class="price-card__value">Стоимость уточняйте</p>
+					<p class="price-card__note">Комплексный курс: чтение, счёт, речь, логика, письмо.</p>
+					<a class="btn btn--accent" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
+				</article>
+				<article class="price-card">
+					<h3>Умная продлёнка</h3>
+					<p class="price-card__for">1–4 класс</p>
+					<p class="price-card__value">Стоимость уточняйте</p>
+					<p class="price-card__note">Первая и вторая смены, возможны разовые дни и абонементы.</p>
+					<a class="btn btn--ghost" href="#lead-form" data-cta="den">Пробный день</a>
+				</article>
 			</div>
+			<p class="prices__note">Актуальные цены и расписание уточняйте при записи — с радостью всё расскажем и подберём формат под вашего ребёнка.</p>
 		</div>
 	</section>
 
-	<section class="reviews">
-		<div class="container">
-			<h2>Отзывы</h2>
-			<div class="cards">
-				<div class="card card--placeholder">
-					<p>«[ТЕКСТ ОТЗЫВА]»</p>
-					<p>— [ИМЯ РОДИТЕЛЯ]</p>
-				</div>
-				<div class="card card--placeholder">
-					<p>«[ТЕКСТ ОТЗЫВА]»</p>
-					<p>— [ИМЯ РОДИТЕЛЯ]</p>
-				</div>
-				<div class="card card--placeholder">
-					<p>«[ТЕКСТ ОТЗЫВА]»</p>
-					<p>— [ИМЯ РОДИТЕЛЯ]</p>
-				</div>
+	<section class="section lead" id="lead-form">
+		<div class="container lead__grid">
+			<div class="lead__content">
+				<p class="section__kicker">Первый шаг</p>
+				<h2>Запишитесь на бесплатную диагностику</h2>
+				<p>Оставьте заявку — мы свяжемся с вами, ответим на вопросы и подберём удобное время для диагностики, пробного занятия или пробного дня.</p>
+				<ul class="lead__points">
+					<li>Ответим на вопросы о программах и расписании</li>
+					<li>Подберём группу по возрасту и уровню</li>
+					<li>Покажем центр на ул. Аксакова 131</li>
+				</ul>
 			</div>
-		</div>
-	</section>
-
-	<section class="lead" id="lead-form">
-		<div class="container">
-			<h2>Оставить заявку</h2>
-			<form class="lead-form" method="post" action="#" novalidate>
-				<p class="lead-form__notice lead-form__notice--demo" id="lead-notice" hidden>
-					Демонстрационная версия: заявка не отправлена.
-				</p>
-
-				<p class="lead-form__field">
+			<form class="lead__form" id="leadForm" novalidate>
+				<div class="field">
 					<label for="lead-name">Ваше имя</label>
-					<input type="text" id="lead-name" name="lead_name" required maxlength="100">
-				</p>
-				<p class="lead-form__field">
+					<input type="text" id="lead-name" name="name" autocomplete="name" required placeholder="Как к вам обращаться">
+				</div>
+				<div class="field">
 					<label for="lead-phone">Телефон</label>
-					<input type="tel" id="lead-phone" name="lead_phone" required maxlength="30">
-				</p>
-				<p class="lead-form__field">
-					<label for="lead-cta">Что вас интересует</label>
-					<select id="lead-cta" name="lead_cta">
+					<input type="tel" id="lead-phone" name="phone" autocomplete="tel" required placeholder="+7 (___) ___-__-__">
+				</div>
+				<div class="field">
+					<label for="lead-topic">Что вас интересует</label>
+					<select id="lead-topic" name="topic" required>
 						<option value="diagnostika">Бесплатная диагностика</option>
 						<option value="zanyatie">Пробное занятие</option>
-						<option value="den">Пробный день</option>
+						<option value="den">Пробный день на продлёнке</option>
 					</select>
-				</p>
-
-				<!-- Honeypot: скрытое поле, люди его не заполняют -->
-				<p class="lead-form__hp" aria-hidden="true">
-					<label for="lead-website">Не заполняйте это поле</label>
-					<input type="text" id="lead-website" name="lead_website" tabindex="-1" autocomplete="off">
-				</p>
-
-				<p class="lead-form__consent">
-					<label>
-						<input type="checkbox" name="lead_consent" value="1" required>
-						Согласен(на) на обработку персональных данных
-					</label>
-				</p>
-
-				<p class="lead-form__submit">
-					<button type="submit" class="btn btn--primary">Отправить заявку</button>
-				</p>
+				</div>
+				<div class="field field--hp" aria-hidden="true">
+					<label for="lead-company">Компания</label>
+					<input type="text" id="lead-company" name="company" tabindex="-1" autocomplete="off">
+				</div>
+				<label class="consent">
+					<input type="checkbox" id="lead-consent" name="consent" required>
+					<span>Соглашаюсь на обработку персональных данных</span>
+				</label>
+				<button class="btn btn--accent btn--lg lead__submit" type="submit">Отправить заявку</button>
+				<p class="lead__notice" id="leadNotice" hidden>Спасибо! Это демонстрационная версия сайта: заявка никуда не отправлена, данные не сохраняются.</p>
 			</form>
 		</div>
 	</section>
 
-	<section class="contacts" id="contacts">
-		<div class="container">
-			<h2>Контакты</h2>
-			<p>Калининград, ул. Аксакова 131</p>
-			<p>Телефон: [ТЕЛЕФОН]</p>
-			<p>Email: [EMAIL]</p>
-			<p>Мы в соцсетях: [СОЦСЕТИ]</p>
+	<section class="section contacts" id="contacts">
+		<div class="container contacts__grid">
+			<div>
+				<p class="section__kicker">Контакты</p>
+				<h2>Ждём вас в «Читай-ке»</h2>
+				<p class="contacts__address">Калининград, ул. Аксакова 131</p>
+				<p>Приходите знакомиться: покажем классы, познакомим с форматом занятий и ответим на все вопросы. Записаться можно через форму выше.</p>
+			</div>
+			<div class="contacts__card">
+				<h3>Как начать</h3>
+				<ol class="contacts__steps">
+					<li>Оставьте заявку на бесплатную диагностику</li>
+					<li>Приходите на встречу в удобное время</li>
+					<li>Выбирайте программу и расписание</li>
+				</ol>
+				<a class="btn btn--accent" href="#lead-form" data-cta="diagnostika">Записаться</a>
+			</div>
 		</div>
 	</section>
 
 </main>
 
 <footer class="site-footer">
-	<div class="container">
-		<p>Детский центр «Читай-ка», Калининград, ул. Аксакова 131</p>
-		<p>Телефон: [ТЕЛЕФОН] · Email: [EMAIL] · [СОЦСЕТИ]</p>
-		<p class="site-footer__legal">[ЛИЦЕНЗИЯ] · [РЕКВИЗИТЫ]</p>
-		<p class="site-footer__copy">Демонстрационная версия сайта. Данные не отправляются.</p>
+	<div class="container site-footer__grid">
+		<div class="site-footer__brand">
+			<img src="assets/logo-chitayka.png" alt="Детский центр «Читай-ка»" class="site-footer__logo">
+			<p>Детский центр «Читай-ка» — обучение чтению, подготовка к школе и умная продлёнка в Калининграде.</p>
+		</div>
+		<nav class="site-footer__nav" aria-label="Меню в подвале">
+			<h3>Разделы</h3>
+			<ul>
+				<li><a href="#directions">Направления</a></li>
+				<li><a href="#programs">Программы</a></li>
+				<li><a href="#prodlenka">Продлёнка</a></li>
+				<li><a href="#prices">Тарифы</a></li>
+				<li><a href="#lead-form">Записаться</a></li>
+			</ul>
+		</nav>
+		<div class="site-footer__contacts">
+			<h3>Адрес</h3>
+			<p>Калининград,<br>ул. Аксакова 131</p>
+			<p class="site-footer__note">Занятия для детей от 4 лет и школьников 1–4 классов.</p>
+		</div>
+	</div>
+	<div class="container site-footer__bottom">
+		<p>© Детский центр «Читай-ка», Калининград</p>
 	</div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="assets/main.js" defer></script>
 </body>
 </html>
