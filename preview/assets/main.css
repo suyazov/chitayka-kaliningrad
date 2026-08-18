@@ -275,10 +275,6 @@ a:hover {
 	align-self: flex-start;
 }
 
-.site-header__contacts {
-	display: none;
-}
-
 .site-header__call {
 	display: inline-flex;
 	align-items: center;
@@ -1253,27 +1249,6 @@ a:hover {
 
 	.site-header__toggle {
 		display: none;
-	}
-
-	.site-header__contacts {
-		display: none;
-	}
-
-.site-header__phone {
-	font-weight: 900;
-	font-size: 1.05rem;
-	color: var(--purple-dark);
-	white-space: nowrap;
-}
-
-	.site-header__vk {
-		font-size: 0.85rem;
-		font-weight: 700;
-		color: var(--ink-soft);
-	}
-
-	.site-header__vk:hover {
-		color: var(--purple-dark);
 	}
 
 	.site-header__nav {

@@ -16,7 +16,6 @@
 .info-card ul { margin-bottom:0; }
 .info-status { margin:14px 0 0; padding:14px 16px; border-left:4px solid var(--yellow); border-radius:8px; background:var(--yellow-soft); color:var(--ink); }
 .info-meta { font-size:.9rem; color:var(--ink-soft); }
-.info-footer-link { color:var(--white); text-decoration:underline; }
 .site-header__nav .info-nav-current { color:var(--purple-dark); background:var(--purple-soft); }
 @media (min-width: 860px) {
   .info-layout { grid-template-columns:300px minmax(0, 1fr); align-items:start; }
