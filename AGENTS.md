@@ -30,5 +30,6 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 - DNS: управляемая A-запись Beget для `chitayka.sy3.ru`.
 - TLS: Let's Encrypt с автоматическим продлением.
 - Preview закрыт от индексации заголовком `X-Robots-Tag: noindex, nofollow, noarchive`.
+- Preview отдаётся без кеширования (`expires -1` в nginx), чтобы клиент всегда видел актуальную версию после обновления страницы.
 - Формы демонстрационные и не отправляют персональные данные.
 - Отдельная публичная страница обязательных сведений: `/svedeniya-ob-obrazovatelnoj-organizacii/` (источник: `preview/svedeniya-ob-obrazovatelnoj-organizacii/index.html`). Неподтверждённые сведения и документы не публиковать как фактические.
