@@ -31,3 +31,4 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 - TLS: Let's Encrypt с автоматическим продлением.
 - Preview закрыт от индексации заголовком `X-Robots-Tag: noindex, nofollow, noarchive`.
 - Формы демонстрационные и не отправляют персональные данные.
+- Отдельная публичная страница обязательных сведений: `/svedeniya-ob-obrazovatelnoj-organizacii/` (источник: `preview/svedeniya-ob-obrazovatelnoj-organizacii/index.html`). Неподтверждённые сведения и документы не публиковать как фактические.
