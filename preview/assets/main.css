@@ -1313,7 +1313,7 @@ a:hover {
 
 	.hero__media {
 		position: absolute;
-		top: 0;
+		top: -24px;
 		right: 0;
 		bottom: 0;
 		width: 50vw;
@@ -1890,7 +1890,7 @@ a:hover {
 		left: 50%;
 		width: 360px;
 		height: 28px;
-		border-top: 3px dashed rgba(108, 79, 216, 0.56);
+		border-bottom: 3px dashed rgba(108, 79, 216, 0.56);
 		border-radius: 50%;
 		transform: translateX(-50%) rotate(2deg);
 	}
