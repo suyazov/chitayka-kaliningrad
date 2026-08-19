@@ -1827,7 +1827,7 @@ a:hover {
 	.home-page .site-header__call {
 		position: absolute;
 		top: 10px;
-		right: 18px;
+		right: 42px;
 		width: 48px;
 		height: 48px;
 		border: 1px solid rgba(108, 79, 216, 0.22);
@@ -1876,7 +1876,7 @@ a:hover {
 		position: absolute;
 		z-index: 4;
 		left: 29%;
-		bottom: -137px;
+		bottom: -149px;
 		width: 118px;
 		pointer-events: none;
 		transform: translateX(-50%) rotate(-2deg);
@@ -1886,16 +1886,31 @@ a:hover {
 		content: "";
 		position: absolute;
 		z-index: -1;
-		top: 2px;
+		top: 0;
 		left: 50%;
-		width: 250px;
-		height: 24px;
+		width: 360px;
+		height: 28px;
 		border-top: 3px dashed rgba(108, 79, 216, 0.56);
 		border-radius: 50%;
-		transform: translateX(-50%) rotate(3deg);
+		transform: translateX(-50%) rotate(2deg);
+	}
+
+	.home-page .site-header__mascot::after {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		top: 8px;
+		left: 50%;
+		width: 48px;
+		height: 43px;
+		border-left: 2px solid rgba(108, 79, 216, 0.68);
+		border-right: 2px solid rgba(108, 79, 216, 0.68);
+		transform: translateX(-50%);
 	}
 
 	.home-page .site-header__mascot img {
+		position: relative;
+		z-index: 2;
 		display: block;
 		width: 100%;
 		height: auto;
@@ -1913,7 +1928,7 @@ a:hover {
 	.home-page .site-header__cta {
 		position: absolute;
 		top: 12px;
-		right: 84px;
+		right: 108px;
 		padding: 13px 22px;
 	}
 
