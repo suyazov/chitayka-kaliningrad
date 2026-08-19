@@ -1228,6 +1228,10 @@ a:hover {
    Desktop
    -------------------------------------------------------------------------- */
 
+.site-header__mascot {
+	display: none;
+}
+
 @media (min-width: 960px) {
 	.site-footer__grid {
 		grid-template-columns: minmax(0, 1.05fr) minmax(300px, 1.2fr) minmax(250px, 0.85fr);
@@ -1865,6 +1869,36 @@ a:hover {
 	.home-page .site-header__nav a.nav-card:hover {
 		transform: translateY(-5px);
 		box-shadow: 0 16px 30px rgba(82, 57, 179, 0.16);
+	}
+
+	.home-page .site-header__mascot {
+		display: block;
+		position: absolute;
+		z-index: 4;
+		left: 29%;
+		bottom: -137px;
+		width: 118px;
+		pointer-events: none;
+		transform: translateX(-50%) rotate(-2deg);
+	}
+
+	.home-page .site-header__mascot::before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 2px;
+		left: 50%;
+		width: 250px;
+		height: 24px;
+		border-top: 3px dashed rgba(108, 79, 216, 0.56);
+		border-radius: 50%;
+		transform: translateX(-50%) rotate(3deg);
+	}
+
+	.home-page .site-header__mascot img {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 
 	.home-page .nav-card img {
