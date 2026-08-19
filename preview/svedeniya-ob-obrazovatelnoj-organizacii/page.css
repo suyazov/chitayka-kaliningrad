@@ -1,20 +1,20 @@
-.info-hero { padding: clamp(48px, 6vw, 76px) 0; background: radial-gradient(700px 320px at 85% -10%, var(--yellow-soft) 0%, rgba(255, 243, 214, 0) 70%), var(--cream); }
+.info-hero { padding: clamp(48px, 6vw, 76px) 0; background: radial-gradient(620px 300px at 88% 0%, rgba(255,214,94,.26) 0%, transparent 70%), linear-gradient(135deg,#f3eeff 0%,#effbf7 100%); }
 .info-hero__back { display:block; width:max-content; margin-bottom:18px; font-weight:800; }
 .info-hero p { max-width: 780px; color: var(--ink-soft); }
 .info-layout { display:grid; gap:28px; padding-top:38px; padding-bottom:64px; }
-.info-nav { align-self:start; padding:20px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); }
+.info-nav { align-self:start; padding:22px; border:1px solid rgba(108,79,216,.11); border-radius:var(--radius-lg); background:rgba(255,255,255,.92); box-shadow:var(--shadow); }
 .info-nav h2 { font-size:1.15rem; }
 .info-nav ol { margin:0; padding-left:22px; }
 .info-nav li + li { margin-top:8px; }
 .info-nav a { font-weight:700; }
 .info-content { min-width:0; }
-.info-card { scroll-margin-top:92px; margin-bottom:20px; padding:22px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); }
+.info-card { scroll-margin-top:92px; margin-bottom:20px; padding:22px; border:1px solid rgba(108,79,216,.10); border-radius:var(--radius-lg); background:rgba(255,255,255,.94); box-shadow:var(--shadow); }
 .info-card h2 { font-size:clamp(1.3rem, 4vw, 1.75rem); }
 .info-card dl { display:grid; gap:12px; margin:0; }
 .info-card dt { font-size:.86rem; font-weight:800; color:var(--ink-soft); }
 .info-card dd { margin:2px 0 0; overflow-wrap:anywhere; }
 .info-card ul { margin-bottom:0; }
-.info-status { margin:14px 0 0; padding:14px 16px; border-left:4px solid var(--yellow); border-radius:8px; background:var(--yellow-soft); color:var(--ink); }
+.info-status { margin:14px 0 0; padding:14px 16px; border-left:4px solid var(--purple); border-radius:14px; background:linear-gradient(135deg,var(--purple-soft),#f8f5ff); color:var(--ink); }
 .info-meta { font-size:.9rem; color:var(--ink-soft); }
 .site-header__nav .info-nav-current { color:var(--purple-dark); background:var(--purple-soft); }
 @media (min-width: 860px) {

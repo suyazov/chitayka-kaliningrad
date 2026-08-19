@@ -6,7 +6,7 @@
 :root {
 	--purple: #6c4fd8;
 	--purple-dark: #5239b3;
-	--purple-soft: #efeafd;
+	--purple-soft: #f1ecff;
 	--mint: #2ec4a0;
 	--mint-dark: #1f9d7f;
 	--mint-soft: #e2f7f1;
@@ -15,15 +15,15 @@
 	--coral: #ff6f61;
 	--coral-dark: #e35648;
 	--coral-soft: #ffe9e6;
-	--cream: #fdf6ec;
+	--cream: #fbf8ff;
 	--ink: #2b2440;
 	--ink-soft: #5c5476;
-	--line: #ece6f6;
+	--line: #e8e0f5;
 	--white: #ffffff;
-	--radius: 18px;
-	--radius-lg: 26px;
-	--shadow: 0 10px 30px rgba(82, 57, 179, 0.10);
-	--shadow-strong: 0 16px 44px rgba(82, 57, 179, 0.16);
+	--radius: 22px;
+	--radius-lg: 30px;
+	--shadow: 0 12px 32px rgba(82, 57, 179, 0.09);
+	--shadow-strong: 0 20px 52px rgba(82, 57, 179, 0.14);
 	--container: 1200px;
 }
 
@@ -1899,4 +1899,212 @@ a:hover {
 	.home-page .dir-card {
 		min-height: 365px;
 	}
+}
+
+/* --------------------------------------------------------------------------
+   Unified design language — shared by every section and legal page
+   -------------------------------------------------------------------------- */
+
+body {
+	background: #fbfaff;
+}
+
+.btn--accent {
+	background: linear-gradient(135deg, #7651dc 0%, #5632b8 100%);
+	box-shadow: 0 10px 24px rgba(82, 57, 179, 0.24);
+}
+
+.btn--accent:hover {
+	background: linear-gradient(135deg, #6541cf 0%, #492aa4 100%);
+}
+
+.btn--ghost {
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.section--tint {
+	background: linear-gradient(180deg, #f5f1ff 0%, #fbfaff 100%);
+}
+
+.section__kicker,
+.section__kicker--light {
+	padding: 5px 11px;
+	border-radius: 999px;
+	background: var(--purple-soft);
+	color: var(--purple-dark);
+}
+
+.program,
+.benefit-card,
+.price-card,
+.price-row,
+.lead__form,
+.contacts__card {
+	border: 1px solid rgba(108, 79, 216, 0.10);
+	box-shadow: var(--shadow);
+}
+
+.program {
+	border-top-width: 4px;
+	border-radius: var(--radius-lg);
+}
+
+.program--coral {
+	border-top-color: #d6c6ff;
+}
+
+.program--coral .program__age {
+	background: var(--purple-soft);
+	color: var(--purple-dark);
+}
+
+.program--coral li::before {
+	background: var(--purple);
+}
+
+.prodlenka {
+	background:
+		radial-gradient(540px 320px at 100% 0%, rgba(255, 214, 94, 0.28), transparent 68%),
+		linear-gradient(135deg, #eee7ff 0%, #f8f5ff 54%, #eefbf7 100%);
+	color: var(--ink);
+}
+
+.prodlenka h2,
+.prodlenka h3 {
+	color: var(--ink);
+}
+
+.prodlenka__lead,
+.shift p:last-child {
+	color: var(--ink-soft);
+}
+
+.shift {
+	background: rgba(255, 255, 255, 0.78);
+	border: 1px solid rgba(108, 79, 216, 0.13);
+	box-shadow: 0 10px 28px rgba(82, 57, 179, 0.07);
+}
+
+.shift__time {
+	color: var(--purple-dark);
+}
+
+.prodlenka__benefits {
+	border: 1px solid rgba(108, 79, 216, 0.10);
+	box-shadow: var(--shadow-strong);
+}
+
+.advantages {
+	background: #ffffff;
+}
+
+.benefit-card {
+	min-height: 220px;
+	border-radius: var(--radius-lg);
+}
+
+.benefit-card__icon {
+	display: block;
+	width: 82px;
+	height: 82px;
+	margin: -4px 0 12px;
+	object-fit: contain;
+	background: transparent;
+	border-radius: 0;
+}
+
+.gallery {
+	background: #fbfaff;
+}
+
+.gallery__slider {
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.84);
+	border: 1px solid rgba(108, 79, 216, 0.10);
+	border-radius: calc(var(--radius-lg) + 8px);
+	box-shadow: var(--shadow-strong);
+}
+
+.slider__viewport,
+.slider__slide img {
+	border-radius: var(--radius-lg);
+}
+
+.price-card--featured {
+	border-color: var(--purple);
+}
+
+.price-card--featured::before {
+	background: linear-gradient(135deg, #7651dc, #5632b8);
+}
+
+.price-row {
+	border-radius: 20px;
+}
+
+.lead {
+	background:
+		radial-gradient(520px 280px at 10% 10%, rgba(255, 214, 94, 0.18), transparent 70%),
+		linear-gradient(135deg, #f7f3ff 0%, #eefbf7 100%);
+}
+
+.lead__form {
+	border-radius: 32px;
+}
+
+.field input,
+.field select {
+	background: #fcfbff;
+	border-color: #e5dcf4;
+	border-radius: 14px;
+}
+
+.contacts {
+	background: #ffffff;
+}
+
+.contacts__card {
+	background: linear-gradient(135deg, #f2edff 0%, #effbf7 100%);
+}
+
+.contacts__map iframe {
+	border: 10px solid #ffffff;
+	box-shadow: var(--shadow-strong);
+}
+
+.site-footer {
+	background:
+		radial-gradient(circle at 10% 0%, rgba(118, 81, 220, 0.12), transparent 34%),
+		linear-gradient(135deg, #f2edff 0%, #eefbf7 100%);
+	color: var(--ink-soft);
+}
+
+.site-footer h3,
+.site-footer__brand .site-footer__title {
+	color: var(--ink);
+}
+
+.site-footer__nav a {
+	color: var(--ink-soft);
+}
+
+.site-footer__nav a:hover,
+.site-footer__contacts a,
+.site-footer__bottom a {
+	color: var(--purple-dark);
+}
+
+.site-footer__contacts {
+	background: rgba(255, 255, 255, 0.72);
+	border-color: rgba(108, 79, 216, 0.12);
+	box-shadow: var(--shadow);
+}
+
+.site-footer__note,
+.site-footer__bottom p {
+	color: #746b8d;
+}
+
+.site-footer__bottom {
+	border-top-color: rgba(82, 57, 179, 0.14);
 }
