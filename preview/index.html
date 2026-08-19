@@ -9,15 +9,16 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="assets/main.css?v=20260818-13">
+	<link rel="stylesheet" href="assets/main.css?v=20260819-1">
 </head>
-<body>
+<body class="home-page">
 <a class="skip-link" href="#main">К содержимому</a>
 
 <header class="site-header">
 	<div class="container site-header__inner">
 		<a class="site-header__brand" href="#top" aria-label="Детский центр «Читай-ка» — на главную">
 			<img class="site-header__logo" src="assets/logo-chitayka.png" alt="Детский центр «Читай-ка»" width="811" height="765" decoding="async">
+			<span class="site-header__brand-copy"><small>детский центр</small><strong>ЧИТАЙ<span>·</span>КА</strong></span>
 		</a>
 		<a class="site-header__call" href="tel:+79114973304" aria-label="Позвонить в центр «Читай-ка»: +7 911 497-33-04">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -30,13 +31,13 @@
 		</button>
 		<nav class="site-header__nav" aria-label="Основное меню">
 			<ul id="primary-menu">
-				<li><a href="#directions">Направления</a></li>
-				<li><a href="#programs">Программы</a></li>
-				<li><a href="#prodlenka">Продлёнка</a></li>
-				<li><a href="#prices">Тарифы</a></li>
-				<li><a href="#gallery">Фото</a></li>
-				<li><a href="/svedeniya-ob-obrazovatelnoj-organizacii/">Документы</a></li>
-				<li><a href="#contacts">Контакты</a></li>
+				<li><a class="nav-card nav-card--lavender" href="#directions"><img src="assets/icons-v2/book.webp" alt="" width="480" height="480"><span>Направления</span></a></li>
+				<li><a class="nav-card nav-card--yellow" href="#programs"><img src="assets/icons-v2/backpack.webp" alt="" width="480" height="480"><span>Программы</span></a></li>
+				<li><a class="nav-card nav-card--mint" href="#prodlenka"><img src="assets/icons-v2/notebook.webp" alt="" width="480" height="480"><span>Продлёнка</span></a></li>
+				<li><a class="nav-card nav-card--lavender" href="#prices"><img src="assets/icons-v2/tag.webp" alt="" width="480" height="480"><span>Тарифы</span></a></li>
+				<li><a class="nav-card nav-card--yellow" href="#gallery"><img src="assets/icons-v2/camera.webp" alt="" width="480" height="480"><span>Фото</span></a></li>
+				<li><a class="nav-card nav-card--mint" href="/svedeniya-ob-obrazovatelnoj-organizacii/"><img src="assets/icons-v2/folder.webp" alt="" width="480" height="480"><span>Документы</span></a></li>
+				<li><a class="nav-card nav-card--lavender" href="#contacts"><img src="assets/icons-v2/envelope.webp" alt="" width="480" height="480"><span>Контакты</span></a></li>
 			</ul>
 			<a class="btn btn--accent site-header__cta" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
 		</nav>
@@ -71,28 +72,40 @@
 	<section class="section directions" id="directions">
 		<div class="container">
 			<header class="section__head">
-				<p class="section__kicker">Чем мы занимаемся</p>
-				<h2>Направления центра</h2>
-				<p class="section__sub">Три ключевых направления, которые закрывают главные задачи дошкольника и младшего школьника.</p>
+				<p class="section__kicker">Направления в «Читай-ке»</p>
+				<h2>Что мы делаем</h2>
+				<p class="section__sub">Помогаем детям учиться с интересом и радостью каждый день.</p>
 			</header>
 			<div class="directions__grid">
 				<article class="dir-card dir-card--purple">
-					<span class="dir-card__icon" aria-hidden="true">📖</span>
+					<img class="dir-card__icon" src="assets/icons-v2/book.webp" alt="" width="480" height="480" loading="lazy">
 					<h3>Обучение чтению</h3>
 					<p>От первых слогов до беглого осмысленного чтения. Развиваем технику, понимание текста и любовь к книгам.</p>
 					<a class="dir-card__link" href="#lead-form" data-cta="zanyatie">Записаться на пробное занятие</a>
 				</article>
 				<article class="dir-card dir-card--mint">
-					<span class="dir-card__icon" aria-hidden="true">🎒</span>
+					<img class="dir-card__icon" src="assets/icons-v2/backpack.webp" alt="" width="480" height="480" loading="lazy">
 					<h3>Подготовка к школе</h3>
 					<p>Полный курс подготовки к 1 классу: чтение, счёт, логика, речь, письмо и навыки самостоятельности.</p>
 					<a class="dir-card__link" href="#lead-form" data-cta="diagnostika">Пройти диагностику готовности</a>
 				</article>
 				<article class="dir-card dir-card--coral">
-					<span class="dir-card__icon" aria-hidden="true">🏫</span>
+					<img class="dir-card__icon" src="assets/icons-v2/study.webp" alt="" width="480" height="480" loading="lazy">
 					<h3>Умная продлёнка</h3>
 					<p>Продлённый день для школьников 1–4 классов: уроки сделаны, развивающие занятия, прогулки и отдых.</p>
 					<a class="dir-card__link" href="#prodlenka">Подробнее о продлёнке</a>
+				</article>
+				<article class="dir-card dir-card--yellow">
+					<img class="dir-card__icon" src="assets/icons-v2/palette.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Развитие и творчество</h3>
+					<p>Развиваем мышление, речь, память и воображение через игры, творчество и общение.</p>
+					<a class="dir-card__link" href="#lead-form" data-cta="zanyatie">Подобрать занятие</a>
+				</article>
+				<article class="dir-card dir-card--care">
+					<img class="dir-card__icon" src="assets/icons-v2/care.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Забота и поддержка</h3>
+					<p>Маленькие группы, добрые педагоги и внимание к каждому ребёнку и его успехам.</p>
+					<a class="dir-card__link" href="#advantages">Наши преимущества</a>
 				</article>
 			</div>
 		</div>

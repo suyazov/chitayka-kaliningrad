@@ -14,3 +14,6 @@ Thumbs.db
 *.log
 *.tmp
 node_modules/
+
+# Local source renders used to produce optimized transparent web icons
+design-assets/

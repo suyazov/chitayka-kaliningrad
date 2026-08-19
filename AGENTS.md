@@ -30,7 +30,8 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 - DNS: управляемая A-запись Beget для `chitayka.sy3.ru`.
 - TLS: Let's Encrypt с автоматическим продлением.
 - Preview закрыт от индексации заголовком `X-Robots-Tag: noindex, nofollow, noarchive`.
-- Preview отдаётся с `Cache-Control: no-store, no-cache, must-revalidate`, чтобы клиент всегда видел актуальную версию после обновления страницы.
+- HTML preview отдаётся с `Cache-Control: no-store, no-cache, must-revalidate`; версионированная статика и изображения — с immutable-кэшем 30 дней.
+- Главная использует собственный набор мягких 3D-иконок WebP из `preview/assets/icons-v2/`; исходные генерации хранятся локально в игнорируемой папке `design-assets/` и не публикуются.
 - Формы демонстрационные и не отправляют персональные данные.
 - Отдельная публичная страница обязательных сведений: `/svedeniya-ob-obrazovatelnoj-organizacii/` (источник: `preview/svedeniya-ob-obrazovatelnoj-organizacii/index.html`). Неподтверждённые сведения и документы не публиковать как фактические.
 - Политика обработки персональных данных: `/politika-konfidencialnosti/`. Пока форма остаётся демонстрационной и ничего не отправляет, политика должна прямо это указывать; перед подключением реальной отправки документ требуется актуализировать.
