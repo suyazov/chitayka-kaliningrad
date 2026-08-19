@@ -1299,7 +1299,7 @@ a:hover {
 	}
 
 	.hero__grid {
-		grid-template-columns: minmax(0, 46%);
+		grid-template-columns: minmax(0, 43%);
 		align-items: center;
 		min-height: calc(100svh - 72px);
 		gap: 0;
@@ -1313,10 +1313,11 @@ a:hover {
 
 	.hero__media {
 		position: absolute;
-		top: -24px;
+		top: 0;
+		left: 0;
 		right: 0;
 		bottom: 0;
-		width: 50vw;
+		width: 100%;
 	}
 
 	.hero__media::before {
@@ -1325,9 +1326,9 @@ a:hover {
 		z-index: 1;
 		top: 0;
 		bottom: 0;
-		left: -1px;
-		width: clamp(80px, 9vw, 150px);
-		background: linear-gradient(90deg, var(--cream) 0%, rgba(255, 249, 240, 0.88) 24%, rgba(255, 249, 240, 0) 100%);
+		left: 0;
+		width: 62%;
+		background: linear-gradient(90deg, var(--cream) 0%, rgba(255, 249, 240, 0.98) 52%, rgba(255, 249, 240, 0) 100%);
 		pointer-events: none;
 	}
 
@@ -1337,7 +1338,7 @@ a:hover {
 		max-width: none;
 		margin: 0;
 		object-fit: cover;
-		object-position: 68% center;
+		object-position: right center;
 		border-radius: 0;
 		box-shadow: none;
 	}
@@ -1877,9 +1878,9 @@ a:hover {
 		display: block;
 		position: absolute;
 		z-index: 4;
-		left: 29%;
-		bottom: -149px;
-		width: 118px;
+		left: 34%;
+		bottom: -174px;
+		width: 144px;
 		pointer-events: none;
 		transform: translateX(-50%) rotate(-2deg);
 	}
@@ -1890,7 +1891,7 @@ a:hover {
 		z-index: -1;
 		top: 0;
 		left: 50%;
-		width: 360px;
+		width: clamp(360px, 32vw, 520px);
 		height: 28px;
 		border-bottom: 3px dashed rgba(108, 79, 216, 0.56);
 		border-radius: 50%;
@@ -1903,8 +1904,8 @@ a:hover {
 		z-index: 1;
 		top: 8px;
 		left: 50%;
-		width: 48px;
-		height: 43px;
+		width: 58px;
+		height: 52px;
 		border-left: 2px solid rgba(108, 79, 216, 0.68);
 		border-right: 2px solid rgba(108, 79, 216, 0.68);
 		transform: translateX(-50%);
@@ -1935,11 +1936,21 @@ a:hover {
 	}
 
 	.home-page .hero {
-		min-height: 650px;
+		min-height: 820px;
 	}
 
 	.home-page .hero__grid {
-		min-height: 650px;
+		min-height: 820px;
+	}
+
+	.home-page .hero__content {
+		max-width: 610px;
+	}
+
+	.home-page .directions {
+		z-index: 5;
+		margin-top: -38px;
+		border-radius: 38px 38px 0 0;
 	}
 
 	.home-page .directions__grid {
