@@ -2170,3 +2170,73 @@ body {
 .site-footer__bottom {
 	border-top-color: rgba(82, 57, 179, 0.14);
 }
+
+/* Brand storytelling — official identity and new conversion sections */
+.site-header__logo--official { width: clamp(185px, 22vw, 250px); height: auto; object-fit: contain; }
+.site-footer__logo--official { width: min(230px, 100%); height: auto; border-radius: 0; background: transparent; }
+
+.journey {
+	position: relative;
+	background: radial-gradient(circle at 8% 16%, rgba(255, 236, 144, 0.35), transparent 22%), linear-gradient(180deg, #fff 0%, #f7f3ff 100%);
+}
+.journey__head { max-width: 760px; }
+.journey__path { position: relative; display: grid; gap: 16px; }
+.journey__path::before { content: ""; position: absolute; z-index: 0; top: 72px; left: 7%; right: 7%; border-top: 3px dashed rgba(108, 79, 216, 0.28); }
+.journey-card { position: relative; z-index: 1; padding: 22px; border: 1px solid rgba(108, 79, 216, 0.11); border-radius: var(--radius-lg); background: rgba(255,255,255,.96); box-shadow: var(--shadow); }
+.journey-card__number { position: absolute; top: 18px; right: 18px; font-size: .78rem; font-weight: 900; letter-spacing: .08em; color: var(--purple); }
+.journey-card img { display: block; width: 92px; height: 92px; margin-bottom: 12px; object-fit: contain; }
+.journey-card h3 { margin-bottom: 7px; }
+.journey-card p { margin: 0; font-size: .94rem; color: var(--ink-soft); }
+.journey__cta { position: relative; display: grid; gap: 16px; align-items: center; margin-top: 28px; padding: 26px; border: 1px solid rgba(108,79,216,.12); border-radius: var(--radius-lg); background: linear-gradient(120deg,#fff9df 0%,#fff 48%,#effbf7 100%); box-shadow: var(--shadow); overflow: hidden; }
+.journey__cta > img { display: none; }
+.journey__cta h3, .journey__cta p { margin-bottom: 5px; }
+.journey__cta p { color: var(--ink-soft); }
+.journey__cta .btn { justify-self: start; }
+
+.advantages-story { display: grid; gap: 34px; align-items: center; }
+.advantages-story__photos { position: relative; min-height: 440px; }
+.advantages-story__main-photo, .advantages-story__small-photo { position: absolute; margin: 0; overflow: hidden; border: 8px solid #fff; border-radius: 30px; box-shadow: var(--shadow-strong); }
+.advantages-story__main-photo { inset: 0 42px 42px 0; }
+.advantages-story__small-photo { right: 0; bottom: 0; width: 42%; height: 48%; transform: rotate(3deg); }
+.advantages-story__photos img { width: 100%; height: 100%; object-fit: cover; }
+.advantages-story__lead { max-width: 620px; font-size: 1.06rem; color: var(--ink-soft); }
+.advantages-story__list { display: grid; gap: 12px; margin: 24px 0 28px; }
+.advantages-story__list article { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 15px 17px; border: 1px solid rgba(108,79,216,.10); border-radius: 18px; background: #fff; box-shadow: 0 8px 22px rgba(82,57,179,.07); }
+.advantages-story__list article > span { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 14px; background: var(--purple-soft); font-size: .78rem; font-weight: 900; color: var(--purple-dark); }
+.advantages-story__list h3, .advantages-story__list p { margin: 0; }
+.advantages-story__list p { margin-top: 4px; font-size: .92rem; color: var(--ink-soft); }
+
+.achievements { position: relative; background: linear-gradient(135deg,#5d3bc0 0%,#7651dc 52%,#4f31ad 100%); color: #fff; overflow: hidden; }
+.achievements::before { content: ""; position: absolute; width: 460px; height: 460px; right: -140px; top: -220px; border-radius: 50%; background: rgba(255,235,111,.16); }
+.achievements__grid { position: relative; display: grid; gap: 36px; align-items: center; }
+.achievements .section__kicker { background: rgba(255,255,255,.14); color: #fff6b4; }
+.achievements h2 { color: #fff; }
+.achievements__content > p:not(.section__kicker) { max-width: 600px; color: rgba(255,255,255,.82); }
+.achievements__points { list-style: none; display: grid; gap: 10px; margin: 24px 0 28px; padding: 0; }
+.achievements__points li { position: relative; padding-left: 28px; font-weight: 700; }
+.achievements__points li::before { content: "★"; position: absolute; left: 0; color: #ffe765; }
+.achievements .btn--ghost { border-color: rgba(255,255,255,.7); background: #fff; }
+.achievements__photos { position: relative; min-height: 460px; }
+.achievements__photo { position: absolute; margin: 0; overflow: hidden; border: 7px solid rgba(255,255,255,.94); border-radius: 26px; box-shadow: 0 22px 48px rgba(34,18,85,.32); }
+.achievements__photo--large { inset: 0 22% 56px 0; transform: rotate(-2deg); }
+.achievements__photo:not(.achievements__photo--large) { right: 0; bottom: 0; width: 43%; height: 58%; transform: rotate(4deg); }
+.achievements__photo img { width: 100%; height: 100%; object-fit: cover; }
+.achievements__mascot { position: absolute; z-index: 3; left: -70px; bottom: -42px; width: 170px; height: auto; filter: drop-shadow(0 12px 16px rgba(35,19,89,.30)); }
+
+@media (min-width: 700px) {
+	.journey__path { grid-template-columns: repeat(2,minmax(0,1fr)); }
+	.journey__cta { grid-template-columns: 130px 1fr auto; padding: 24px 28px 24px 150px; }
+	.journey__cta > img { position: absolute; left: 18px; bottom: -24px; display: block; width: 132px; height: auto; }
+}
+@media (min-width: 960px) {
+	.journey__path { grid-template-columns: repeat(4,minmax(0,1fr)); }
+	.advantages-story, .achievements__grid { grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); gap: clamp(48px,6vw,92px); }
+	.advantages-story__photos { min-height: 590px; }
+	.achievements__photos { min-height: 560px; }
+}
+@media (max-width: 699px) {
+	.journey__path::before { display: none; }
+	.advantages-story__photos { min-height: 360px; }
+	.achievements__photos { min-height: 390px; }
+	.achievements__mascot { left: -22px; width: 130px; }
+}

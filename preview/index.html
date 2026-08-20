@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="assets/main.css?v=20260819-8">
+	<link rel="stylesheet" href="assets/main.css?v=20260820-1">
 </head>
 <body class="home-page">
 <a class="skip-link" href="#main">К содержимому</a>
@@ -17,8 +17,7 @@
 <header class="site-header">
 	<div class="container site-header__inner">
 		<a class="site-header__brand" href="#top" aria-label="Детский центр «Читай-ка» — на главную">
-			<img class="site-header__logo" src="assets/logo-chitayka.png" alt="Детский центр «Читай-ка»" width="811" height="765" decoding="async">
-			<span class="site-header__brand-copy"><small>детский центр</small><strong>ЧИТАЙ<span>·</span>КА</strong></span>
+			<img class="site-header__logo site-header__logo--official" src="assets/brand/logo-official.webp" alt="Детский центр «Читай-ка»" width="780" height="220" decoding="async">
 		</a>
 		<a class="site-header__call" href="tel:+79114973304" aria-label="Позвонить в центр «Читай-ка»: +7 911 497-33-04">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -114,6 +113,50 @@
 		</div>
 	</section>
 
+	<section class="section journey" id="first-visit">
+		<div class="container">
+			<header class="section__head journey__head">
+				<p class="section__kicker">Первое знакомство</p>
+				<h2>Как проходит первое занятие</h2>
+				<p class="section__sub">Спокойно знакомимся, определяем текущий уровень и подбираем формат, в котором ребёнку будет интересно.</p>
+			</header>
+			<div class="journey__path">
+				<article class="journey-card">
+					<span class="journey-card__number">01</span>
+					<img src="assets/icons-v2/care.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Знакомимся</h3>
+					<p>Ребёнок осваивается, педагог общается с ним без спешки и давления.</p>
+				</article>
+				<article class="journey-card">
+					<span class="journey-card__number">02</span>
+					<img src="assets/icons-v2/book.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Смотрим навыки</h3>
+					<p>Определяем технику чтения, понимание текста и школьные навыки.</p>
+				</article>
+				<article class="journey-card">
+					<span class="journey-card__number">03</span>
+					<img src="assets/icons-v2/palette.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Пробуем формат</h3>
+					<p>Даём небольшое игровое задание и наблюдаем, что увлекает ребёнка.</p>
+				</article>
+				<article class="journey-card">
+					<span class="journey-card__number">04</span>
+					<img src="assets/icons-v2/notebook.webp" alt="" width="480" height="480" loading="lazy">
+					<h3>Даём рекомендации</h3>
+					<p>Рассказываем родителям о сильных сторонах и предлагаем подходящую программу.</p>
+				</article>
+			</div>
+			<div class="journey__cta">
+				<img src="assets/stickers/mascot-pointing.webp" alt="" width="520" height="520" loading="lazy">
+				<div>
+					<h3>Не знаете, с чего начать?</h3>
+					<p>Начните с бесплатной диагностики — она поможет выбрать программу без догадок.</p>
+				</div>
+				<a class="btn btn--accent" href="#lead-form" data-cta="diagnostika">Пройти диагностику</a>
+			</div>
+		</div>
+	</section>
+
 	<section class="section section--tint programs" id="programs">
 		<div class="container">
 			<header class="section__head">
@@ -196,42 +239,26 @@
 	</section>
 
 	<section class="section advantages" id="advantages">
-		<div class="container">
-			<header class="section__head">
+		<div class="container advantages-story">
+			<div class="advantages-story__photos">
+				<figure class="advantages-story__main-photo">
+					<img src="assets/gallery/photo-02.webp" alt="Дети вместе читают книгу на занятии в центре «Читай-ка»" width="1600" height="1067" loading="lazy" decoding="async">
+				</figure>
+				<figure class="advantages-story__small-photo">
+					<img src="assets/gallery/photo-10.webp" alt="Дружная группа детей центра «Читай-ка»" width="1067" height="1600" loading="lazy" decoding="async">
+				</figure>
+			</div>
+			<div class="advantages-story__content">
 				<p class="section__kicker">Почему «Читай-ка»</p>
-				<h2>Наши преимущества</h2>
-			</header>
-			<div class="advantages__grid">
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/care.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Маленькие группы</h3>
-					<p>Педагог видит каждого ребёнка и успевает уделить внимание всем.</p>
+				<h2>Место, где ребёнка замечают</h2>
+				<p class="advantages-story__lead">Соединяем обучение, игру и поддержку — ребёнок двигается в своём темпе и не боится пробовать.</p>
+				<div class="advantages-story__list">
+					<article><span>01</span><div><h3>Маленькие группы</h3><p>Педагог видит каждого ребёнка и успевает помочь именно там, где это нужно.</p></div></article>
+					<article><span>02</span><div><h3>Старт с диагностики</h3><p>Сначала определяем уровень, затем предлагаем понятную и посильную программу.</p></div></article>
+					<article><span>03</span><div><h3>Без давления и сравнений</h3><p>Поддерживаем интерес к занятиям и отмечаем личный прогресс ребёнка.</p></div></article>
+					<article><span>04</span><div><h3>Обратная связь родителям</h3><p>Объясняем, что получается и на какие навыки стоит обратить внимание дальше.</p></div></article>
 				</div>
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/tag.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Старт с диагностики</h3>
-					<p>Определяем уровень и цели до начала занятий — программа честная и посильная.</p>
-				</div>
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/book.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Фокус на чтении</h3>
-					<p>Чтение — база всех школьных предметов. Мы делаем её прочной.</p>
-				</div>
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/palette.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Бережная атмосфера</h3>
-					<p>Без давления и сравнений: дети занимаются с интересом и приходят снова.</p>
-				</div>
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/envelope.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Удобное расположение</h3>
-					<p>Калининград, ул. Аксакова 131 — легко добираться пешком и на транспорте.</p>
-				</div>
-				<div class="benefit-card">
-					<img class="benefit-card__icon" src="assets/icons-v2/notebook.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Гибкие форматы</h3>
-					<p>Диагностика, пробное занятие или пробный день — выберите удобный старт.</p>
-				</div>
+				<a class="btn btn--accent" href="#lead-form" data-cta="zanyatie">Познакомиться с центром</a>
 			</div>
 		</div>
 	</section>
@@ -305,6 +332,31 @@
 				<button class="slider__btn slider__btn--prev" type="button" aria-label="Предыдущее фото">←</button>
 				<button class="slider__btn slider__btn--next" type="button" aria-label="Следующее фото">→</button>
 				<p class="slider__counter" aria-live="polite">1 / 14</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section achievements" id="achievements">
+		<div class="container achievements__grid">
+			<div class="achievements__content">
+				<p class="section__kicker">Маленькие победы</p>
+				<h2>Результаты, которыми дети гордятся</h2>
+				<p>Уверенно прочитанный текст, выполненное задание, первая самостоятельная работа или заслуженный диплом — мы замечаем каждый шаг вперёд.</p>
+				<ul class="achievements__points">
+					<li>Поддерживаем интерес к обучению</li>
+					<li>Отмечаем личный прогресс ребёнка</li>
+					<li>Радуемся достижениям вместе с семьёй</li>
+				</ul>
+				<a class="btn btn--ghost" href="#lead-form" data-cta="zanyatie">Записаться на пробное занятие</a>
+			</div>
+			<div class="achievements__photos">
+				<figure class="achievements__photo achievements__photo--large">
+					<img src="assets/gallery/photo-04.webp" alt="Дети центра «Читай-ка» с дипломами" decoding="async">
+				</figure>
+				<figure class="achievements__photo">
+					<img src="assets/gallery/photo-03.webp" alt="Выпускник центра «Читай-ка» с дипломом" decoding="async">
+				</figure>
+				<img class="achievements__mascot" src="assets/stickers/mascot-diploma.webp" alt="" width="520" height="520" loading="lazy">
 			</div>
 		</div>
 	</section>
@@ -513,7 +565,7 @@
 <footer class="site-footer" id="site-footer">
 	<div class="container site-footer__grid">
 		<div class="site-footer__brand">
-			<img src="assets/logo-chitayka.png" alt="Детский центр «Читай-ка»" class="site-footer__logo">
+			<img src="assets/brand/logo-official.webp" alt="Детский центр «Читай-ка»" class="site-footer__logo site-footer__logo--official" width="780" height="220">
 			<p class="site-footer__title">Детский центр «Читай-ка»</p>
 			<p>Обучение чтению, подготовка к школе и умная продлёнка в Калининграде.</p>
 		</div>
