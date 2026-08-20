@@ -2227,8 +2227,13 @@ body {
 
 @media (min-width: 700px) {
 	.journey__path { grid-template-columns: repeat(2,minmax(0,1fr)); }
-	.journey__cta { grid-template-columns: 130px 1fr auto; padding: 24px 28px 24px 150px; }
-	.journey__cta > img { position: absolute; left: 18px; bottom: -24px; display: block; width: 132px; height: auto; }
+	.journey__cta { grid-template-columns: minmax(0,1fr); column-gap: 32px; padding: 28px 28px 28px 175px; }
+	.journey__cta > img { position: absolute; left: 24px; bottom: -32px; display: block; width: 150px; height: auto; }
+	.journey__cta > div { max-width: 640px; }
+}
+
+@media (min-width: 960px) {
+	.journey__cta { grid-template-columns: minmax(0,1fr) auto; padding-left: 190px; }
 }
 @media (min-width: 960px) {
 	.journey__path { grid-template-columns: repeat(4,minmax(0,1fr)); }
