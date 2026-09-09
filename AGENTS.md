@@ -49,6 +49,7 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 - Предыдущая статическая версия сохранена для быстрого отката в `/home/m/mzibitu3/chitayka39.ru/public_html.static-before-wordpress-20260909`; отдельный tar-архив — `/home/m/mzibitu3/backups/chitayka39.ru-static-before-wordpress-20260909.tar.gz`.
 - Доступ Beget хранится только в защищённом локальном хранилище `/root/.config/client-access/chitayka39.ru/beget-panel.env`, вне Git.
 - Доступ WordPress и MySQL хранится только в `/root/.config/client-access/chitayka39.ru/wordpress.env` с правами `0600`, вне Git.
+- SSH на аккаунте Beget после деплоя снова отключён; для обслуживания включать временно через панель и отключать после завершения.
 - Перед первой публикацией штатная заглушка Beget сохранена локально в `/root/backups/chitayka39.ru/2026-09-08-before-first-deploy/`.
 - HTTPS активен. Главная, страница сведений, политика, основной CSS, WordPress-админка и Customizer проверены после переключения ответом HTTP 200.
 - Форма на production обрабатывается через `admin-post.php`, требует согласие и отправляет заявку на WordPress `admin_email`; honeypot-smoke проверен без отправки письма клиенту.
