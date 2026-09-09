@@ -18,6 +18,26 @@ if ( false === $html ) {
 	return;
 }
 
+$section_ids = array(
+	'hero'         => 'top',
+	'directions'   => 'directions',
+	'journey'      => 'first-visit',
+	'programs'     => 'programs',
+	'prodlenka'    => 'prodlenka',
+	'advantages'   => 'advantages',
+	'gallery'      => 'gallery',
+	'achievements' => 'achievements',
+	'prices'       => 'prices',
+	'lead'         => 'lead-form',
+);
+foreach ( $section_ids as $section_key => $section_id ) {
+	if ( chitayka_is_home_section_enabled( $section_key ) ) {
+		continue;
+	}
+	$pattern = '#\s*<section\b(?=[^>]*\bid="' . preg_quote( $section_id, '#' ) . '")[^>]*>.*?</section>\s*#s';
+	$html    = preg_replace( $pattern, '', $html, 1 );
+}
+
 $asset_uri  = trailingslashit( get_template_directory_uri() ) . 'assets/';
 $home_uri   = trailingslashit( home_url( '/' ) );
 $phone      = chitayka_option( 'phone', '+7 911 497-33-04' );

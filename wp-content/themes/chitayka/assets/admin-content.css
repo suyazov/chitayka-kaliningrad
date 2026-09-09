@@ -1,120 +1,82 @@
-.chitayka-admin {
-	max-width: 1180px;
-	padding-bottom: 110px;
-}
+.chitayka-admin { max-width: 1180px; }
 
-.chitayka-admin__heading {
+.chitayka-admin__heading { margin: 22px 0 16px; }
+.chitayka-admin__heading h1 { margin: 0 0 6px; font-size: 26px; }
+.chitayka-admin__heading p { margin: 0; color: #646970; font-size: 14px; }
+
+.chitayka-toolbar {
+	position: sticky;
+	top: 32px;
+	z-index: 50;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 24px;
-	margin: 24px 0 20px;
-}
-
-.chitayka-admin__heading h1 { margin: 0 0 7px; font-size: 28px; }
-.chitayka-admin__heading p { margin: 0; color: #646176; font-size: 15px; }
-
-.chitayka-tabs {
-	display: flex;
-	gap: 8px;
-	margin: 20px 0;
-	padding: 8px;
-	background: #fff;
-	border: 1px solid #e4dff4;
-	border-radius: 16px;
-	box-shadow: 0 8px 28px rgba(79, 49, 146, .06);
-	overflow-x: auto;
-}
-
-.chitayka-tabs__button {
-	padding: 10px 18px;
-	border: 0;
-	border-radius: 10px;
-	background: transparent;
-	color: #312b46;
-	font-weight: 700;
-	cursor: pointer;
-}
-
-.chitayka-tabs__button:hover { color: #653bd8; background: #f7f4ff; }
-.chitayka-tabs__button.is-active { color: #fff; background: linear-gradient(135deg, #744ce5, #5526c6); }
-
-.chitayka-tab { display: none; }
-.chitayka-tab.is-active { display: block; }
-
-.chitayka-panel {
-	margin: 0 0 20px;
-	padding: 26px;
-	background: #fff;
-	border: 1px solid #e4dff4;
-	border-radius: 18px;
-	box-shadow: 0 8px 30px rgba(79, 49, 146, .06);
-}
-
-.chitayka-panel__head { margin-bottom: 22px; }
-.chitayka-panel__head h2 { margin: 0 0 6px; color: #2d2740; font-size: 21px; }
-.chitayka-panel__head p { margin: 0; color: #6f6980; }
-
-.chitayka-fields {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 20px 24px;
-}
-
-.chitayka-field { display: flex; flex-direction: column; gap: 7px; }
-.chitayka-field label { color: #332d47; font-weight: 650; }
-.chitayka-field input[type="text"],
-.chitayka-field textarea {
-	width: 100%;
-	max-width: none;
-	padding: 10px 12px;
-	border-color: #d9d1ec;
+	gap: 10px;
+	margin: 0 0 16px;
+	padding: 10px 14px;
+	background: rgba(255,255,255,.97);
+	border: 1px solid #dcdcde;
 	border-radius: 9px;
+	box-shadow: 0 2px 8px rgba(0,0,0,.07);
 }
-.chitayka-field textarea { min-height: 92px; resize: vertical; }
-.chitayka-field input:focus,
-.chitayka-field textarea:focus { border-color: #6a3ed8; box-shadow: 0 0 0 1px #6a3ed8; }
+.chitayka-toolbar--bottom { position: static; margin-top: 16px; }
+.chitayka-toolbar__status { margin-left: auto; color: #646970; font-size: 12px; }
+.chitayka-toolbar__status i { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: #2fbf9d; }
 
+.chitayka-card {
+	margin: 0 0 12px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.chitayka-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: #f6f7f7; border-bottom: 1px solid transparent; }
+.chitayka-card.is-open .chitayka-card__head { border-bottom-color: #e2e4e7; }
+.chitayka-card__toggle { display: flex; align-items: center; gap: 10px; flex: 1; min-height: 30px; padding: 3px 0; color: #1d2327; text-align: left; background: none; border: 0; cursor: pointer; }
+.chitayka-card__chevron { width: 8px; height: 8px; border-right: 2px solid #787c82; border-bottom: 2px solid #787c82; transform: rotate(45deg); transition: transform .15s; }
+.chitayka-card.is-open .chitayka-card__chevron { transform: rotate(225deg); }
+.chitayka-card__title { margin: 0; font-size: 14px; font-weight: 650; }
+.chitayka-card__status { margin-left: 3px; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.chitayka-card__status.is-on { color: #14803c; background: #e5f5e9; }
+.chitayka-card__status.is-off { color: #787c82; background: #ececef; }
+.chitayka-card__actions { display: flex; align-items: center; gap: 12px; }
+.chitayka-card__actions a { font-size: 12px; text-decoration: none; }
+.chitayka-card__actions small { color: #787c82; font-size: 11px; }
+.chitayka-card__body { padding: 18px; }
+.chitayka-card__description { margin: 0 0 18px; color: #787c82; font-size: 12px; }
+.chitayka-card__footer { margin-top: 18px; padding-top: 13px; border-top: 1px dashed #dcdcde; }
+
+.chitayka-switch { position: relative; display: inline-flex; cursor: pointer; }
+.chitayka-switch input { position: absolute; width: 0; height: 0; opacity: 0; }
+.chitayka-switch span { position: relative; display: block; width: 34px; height: 18px; border-radius: 12px; background: #c3c4c7; transition: background .15s; }
+.chitayka-switch span::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2); transition: left .15s; }
+.chitayka-switch input:checked + span { background: #6a3ed8; }
+.chitayka-switch input:checked + span::after { left: 18px; }
+.chitayka-switch input:focus-visible + span { outline: 2px solid #2271b1; outline-offset: 2px; }
+
+.chitayka-fields { display: grid; grid-template-columns: minmax(0, 720px); gap: 15px; }
+.chitayka-fields--prices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .chitayka-fields--gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.chitayka-field--image { padding: 14px; border: 1px solid #e6e1ef; border-radius: 14px; background: #faf9fd; }
-.chitayka-image img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: 12px; border-radius: 10px; background: #eee; }
-.chitayka-image__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.chitayka-field { position: relative; display: flex; flex-direction: column; gap: 5px; }
+.chitayka-field label { color: #2c3338; font-size: 13px; font-weight: 600; }
+.chitayka-field input[type="text"], .chitayka-field input[type="email"], .chitayka-field input[type="url"], .chitayka-field textarea { width: 100%; max-width: none; padding: 8px 10px; border-color: #c3c4c7; border-radius: 5px; }
+.chitayka-field textarea { min-height: 84px; resize: vertical; }
+.chitayka-field input:focus, .chitayka-field textarea:focus { border-color: #6a3ed8; box-shadow: 0 0 0 1px #6a3ed8; }
+.chitayka-counter { position: absolute; top: 0; right: 0; color: #a7aaad; font-size: 11px; }
+.chitayka-counter.is-near { color: #d63638; font-weight: 600; }
 
-.chitayka-savebar {
-	position: fixed;
-	right: 24px;
-	bottom: 18px;
-	left: 184px;
-	z-index: 20;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 20px;
-	max-width: 1140px;
-	margin: 0 auto;
-	padding: 14px 18px;
-	background: rgba(45, 39, 64, .96);
-	border-radius: 14px;
-	box-shadow: 0 14px 40px rgba(24, 18, 48, .25);
-}
-
-.chitayka-savebar p { margin: 0; color: #e8e2f5; }
-.chitayka-savebar p span { color: #4ec7a5; margin-right: 7px; }
-.chitayka-savebar.is-dirty p span { color: #ff816f; }
-.chitayka-savebar .button-primary { border-color: #774be4; background: #6a3ed8; }
+.chitayka-field--image { padding: 12px; background: #fafafa; border: 1px solid #e2e4e7; border-radius: 8px; }
+.chitayka-image { display: flex; align-items: flex-start; gap: 12px; }
+.chitayka-image img { width: 140px; height: 92px; object-fit: cover; border: 1px solid #dcdcde; border-radius: 6px; background: #f0f0f1; }
+.chitayka-image__actions { display: flex; flex-direction: column; gap: 6px; }
 
 @media (max-width: 960px) {
-	.chitayka-fields,
-	.chitayka-fields--gallery { grid-template-columns: 1fr 1fr; }
-	.chitayka-savebar { left: 56px; }
+	.chitayka-fields--prices, .chitayka-fields--gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 700px) {
-	.chitayka-admin__heading { align-items: flex-start; flex-direction: column; }
-	.chitayka-fields,
-	.chitayka-fields--gallery { grid-template-columns: 1fr; }
-	.chitayka-panel { padding: 18px; }
-	.chitayka-savebar { right: 10px; bottom: 10px; left: 10px; }
-	.chitayka-savebar p { display: none; }
-	.chitayka-savebar .button { width: 100%; }
+@media (max-width: 782px) {
+	.chitayka-toolbar { top: 46px; flex-wrap: wrap; }
+	.chitayka-toolbar__status { width: 100%; margin-left: 0; }
+	.chitayka-card__head { flex-wrap: wrap; }
+	.chitayka-card__actions { width: 100%; justify-content: flex-end; }
+	.chitayka-fields--prices, .chitayka-fields--gallery { grid-template-columns: 1fr; }
 }

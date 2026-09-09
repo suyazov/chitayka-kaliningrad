@@ -42,9 +42,9 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 ## Production
 - URL: `https://chitayka39.ru/`.
 - Хостинг: виртуальный хостинг Beget; каталог сайта `chitayka39.ru/public_html`.
-- С 2026-09-09 production работает на WordPress 7.1, PHP 8.3 и MySQL 8.4. Активна кастомная тема `chitayka` 1.1.0.
+- С 2026-09-09 production работает на WordPress 7.1, PHP 8.3 и MySQL 8.4. Активна кастомная тема `chitayka` 1.2.0.
 - Production web-root: `/home/m/mzibitu3/chitayka39.ru/public_html`.
-- Основные тексты главной, программы, контакты, тарифы и фотографии редактируются в отдельном пункте WordPress `Контент сайта`; данные совместимы с прежним Customizer.
+- Админка контента построена по проверенному паттерну LEMESH PRO: отдельный раздел `ЧИТАЙ-КА`, подстраницы `Главная страница` и `Контакты и реквизиты`, сворачиваемые блоки в порядке публичной страницы, управление видимостью некритичных секций, переход к блоку на сайте, восстановление исходных значений, счётчики символов, предупреждение о несохранённых правках и пять автоматических резервных копий. Данные совместимы с прежним Customizer.
 - Фирменный favicon темы собран из официального знака персонажа и используется на публичных, административных и login-страницах, пока в WordPress не выбрана другая Site Icon.
 - Отдельные страницы WordPress: `/politika-konfidencialnosti/` и `/svedeniya-ob-obrazovatelnoj-organizacii/`.
 - Предыдущая статическая версия сохранена для быстрого отката в `/home/m/mzibitu3/chitayka39.ru/public_html.static-before-wordpress-20260909`; отдельный tar-архив — `/home/m/mzibitu3/backups/chitayka39.ru-static-before-wordpress-20260909.tar.gz`.

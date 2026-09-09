@@ -1,6 +1,6 @@
 <?php
 /**
- * Упрощённый редактор содержимого сайта в админке WordPress.
+ * Редактор содержимого сайта по проверенному паттерну LEMESH PRO.
  *
  * @package chitayka
  */
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Поля редактора, сгруппированные по вкладкам.
+ * Декларативная схема редактируемых полей.
  *
  * @return array<string,array<string,mixed>>
  */
@@ -223,76 +223,168 @@ function chitayka_flat_content_fields() {
 	return $fields;
 }
 
+/**
+ * Секции главной в том же порядке, что и на публичной странице.
+ *
+ * @return array<string,array<string,mixed>>
+ */
+function chitayka_home_content_sections() {
+	$schema = chitayka_content_schema_with_gallery( chitayka_content_fields() );
+	return array(
+		'hero'         => array( 'title' => 'Первый экран', 'description' => 'Главный оффер, вводный текст и короткие преимущества.', 'anchor' => 'top', 'critical' => true, 'fields' => $schema['home']['sections']['hero']['fields'] ),
+		'directions'   => array( 'title' => 'Направления', 'description' => 'Основные направления центра и тексты карточек.', 'anchor' => 'directions', 'fields' => $schema['home']['sections']['directions']['fields'] ),
+		'journey'      => array( 'title' => 'Первое занятие', 'description' => 'Как проходит знакомство с центром и призыв пройти диагностику.', 'anchor' => 'first-visit', 'fields' => $schema['home']['sections']['journey']['fields'] ),
+		'programs'     => array( 'title' => 'Возрастные программы', 'description' => 'Названия программ и возрастные группы.', 'anchor' => 'programs', 'fields' => $schema['programs']['sections']['programs']['fields'] ),
+		'prodlenka'    => array( 'title' => 'Продлёнка', 'description' => 'Описание продлёнки, смены и время работы.', 'anchor' => 'prodlenka', 'fields' => $schema['programs']['sections']['prodlenka']['fields'] ),
+		'advantages'   => array( 'title' => 'Преимущества', 'description' => 'Почему родители выбирают центр.', 'anchor' => 'advantages', 'fields' => $schema['programs']['sections']['advantages']['fields'] ),
+		'gallery'      => array( 'title' => 'Фотогалерея', 'description' => 'Заголовок, описание и фотографии. Сброс фотографии возвращает изображение из темы.', 'anchor' => 'gallery', 'fields' => array_merge( $schema['home']['sections']['gallery_copy']['fields'], $schema['gallery']['sections']['gallery']['fields'] ) ),
+		'achievements' => array( 'title' => 'Результаты детей', 'description' => 'Текст о достижениях воспитанников.', 'anchor' => 'achievements', 'fields' => $schema['programs']['sections']['achievements']['fields'] ),
+		'prices'       => array( 'title' => 'Тарифы', 'description' => 'Цены по направлениям и дополнительным услугам.', 'anchor' => 'prices', 'fields' => $schema['prices']['sections']['prices']['fields'], 'layout' => 'prices' ),
+		'lead'         => array( 'title' => 'Форма заявки', 'description' => 'Текст рядом с формой бесплатной диагностики.', 'anchor' => 'lead-form', 'critical' => true, 'fields' => $schema['programs']['sections']['lead']['fields'] ),
+	);
+}
+
+/**
+ * Текущая видимость секций главной.
+ *
+ * @return array<string,int>
+ */
+function chitayka_get_sections_visibility() {
+	$defaults = array_fill_keys( array_keys( chitayka_home_content_sections() ), 1 );
+	$saved    = get_option( 'chitayka_sections_visibility', array() );
+	$values   = is_array( $saved ) ? array_merge( $defaults, $saved ) : $defaults;
+	$values['hero'] = 1;
+	$values['lead'] = 1;
+	return $values;
+}
+
+/**
+ * Проверяет, включена ли секция на главной.
+ *
+ * @param string $key Ключ секции.
+ * @return bool
+ */
+function chitayka_is_home_section_enabled( $key ) {
+	$visibility = chitayka_get_sections_visibility();
+	return ! empty( $visibility[ $key ] );
+}
+
 add_action(
 	'admin_menu',
 	function () {
-		add_menu_page(
-			'Контент сайта «Читай-ка»',
-			'Контент сайта',
-			'edit_theme_options',
-			'chitayka-content',
-			'chitayka_render_content_admin',
-			'dashicons-edit-page',
-			3
-		);
+		$capability = 'edit_theme_options';
+		add_menu_page( '«Читай-ка» — управление сайтом', 'ЧИТАЙ-КА', $capability, 'chitayka-content', 'chitayka_render_home_content_admin', 'dashicons-admin-home', 3 );
+		add_submenu_page( 'chitayka-content', 'Главная страница', 'Главная страница', $capability, 'chitayka-content', 'chitayka_render_home_content_admin' );
+		add_submenu_page( 'chitayka-content', 'Контакты и реквизиты', 'Контакты и реквизиты', $capability, 'chitayka-contacts', 'chitayka_render_contacts_admin' );
 	}
 );
 
 add_action(
 	'admin_enqueue_scripts',
-	function ( $hook_suffix ) {
-		if ( 'toplevel_page_chitayka-content' !== $hook_suffix ) {
+	function () {
+		$page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
+		if ( 0 !== strpos( $page, 'chitayka-' ) ) {
 			return;
 		}
-
 		wp_enqueue_media();
 		wp_enqueue_style( 'chitayka-admin-content', get_template_directory_uri() . '/assets/admin-content.css', array(), CHITAYKA_VERSION );
 		wp_enqueue_script( 'chitayka-admin-content', get_template_directory_uri() . '/assets/admin-content.js', array(), CHITAYKA_VERSION, true );
+		wp_localize_script(
+			'chitayka-admin-content',
+			'chitaykaAdmin',
+			array(
+				'confirmReset' => 'Восстановить исходные значения этого блока? Текущие изменения блока будут потеряны.',
+				'unsaved'      => 'Есть несохранённые изменения. Уйти со страницы?',
+			)
+		);
 	}
 );
 
+/** Сохраняет резервную копию последних пяти состояний контента. */
+function chitayka_backup_content_options() {
+	$mods = get_theme_mods();
+	$data = array();
+	foreach ( chitayka_flat_content_fields() as $key => $field ) {
+		$mod_key = 'chitayka_' . $key;
+		if ( array_key_exists( $mod_key, $mods ) ) {
+			$data[ $mod_key ] = $mods[ $mod_key ];
+		}
+	}
+	$backups = get_option( 'chitayka_content_backups', array() );
+	$backups = is_array( $backups ) ? $backups : array();
+	array_unshift(
+		$backups,
+		array(
+			'time'       => current_time( 'mysql' ),
+			'user'       => get_current_user_id(),
+			'theme_mods' => $data,
+			'visibility' => chitayka_get_sections_visibility(),
+		)
+	);
+	update_option( 'chitayka_content_backups', array_slice( $backups, 0, 5 ), false );
+}
+
 /**
- * Сохраняет данные редактора в theme_mods, совместимые с Customizer.
+ * Очищает значение поля согласно декларативной схеме.
+ *
+ * @param string              $value Сырое значение.
+ * @param array<string,mixed> $field Схема поля.
+ * @return string
  */
+function chitayka_sanitize_content_value( $value, $field ) {
+	switch ( isset( $field['sanitize'] ) ? $field['sanitize'] : '' ) {
+		case 'email':
+			return sanitize_email( $value );
+		case 'url':
+			return esc_url_raw( $value );
+		default:
+			return 'textarea' === ( isset( $field['type'] ) ? $field['type'] : '' ) ? sanitize_textarea_field( $value ) : sanitize_text_field( $value );
+	}
+}
+
+/** Сохраняет данные редактора в theme_mods, совместимые с Customizer. */
 function chitayka_save_content_admin() {
 	if ( ! current_user_can( 'edit_theme_options' ) ) {
 		wp_die( esc_html__( 'Недостаточно прав для изменения сайта.', 'chitayka' ) );
 	}
-
 	check_admin_referer( 'chitayka_save_content', 'chitayka_content_nonce' );
-	$values = isset( $_POST['chitayka'] ) && is_array( $_POST['chitayka'] ) ? wp_unslash( $_POST['chitayka'] ) : array();
+	chitayka_backup_content_options();
 
-	foreach ( chitayka_flat_content_fields() as $key => $field ) {
-		if ( ! array_key_exists( $key, $values ) ) {
-			continue;
+	$editor_page = isset( $_POST['editor_page'] ) ? sanitize_key( wp_unslash( $_POST['editor_page'] ) ) : 'home';
+	$page_slug   = 'contacts' === $editor_page ? 'chitayka-contacts' : 'chitayka-content';
+	$reset       = isset( $_POST['reset_section'] ) ? sanitize_key( wp_unslash( $_POST['reset_section'] ) ) : '';
+
+	if ( '' !== $reset && 'home' === $editor_page ) {
+		$sections = chitayka_home_content_sections();
+		if ( isset( $sections[ $reset ] ) ) {
+			foreach ( $sections[ $reset ]['fields'] as $key => $field ) {
+				remove_theme_mod( 'chitayka_' . $key );
+			}
+		}
+	} else {
+		$values = isset( $_POST['chitayka'] ) && is_array( $_POST['chitayka'] ) ? wp_unslash( $_POST['chitayka'] ) : array();
+		foreach ( chitayka_flat_content_fields() as $key => $field ) {
+			if ( array_key_exists( $key, $values ) ) {
+				set_theme_mod( 'chitayka_' . $key, chitayka_sanitize_content_value( (string) $values[ $key ], $field ) );
+			}
 		}
 
-		$value = (string) $values[ $key ];
-		switch ( isset( $field['sanitize'] ) ? $field['sanitize'] : '' ) {
-			case 'email':
-				$value = sanitize_email( $value );
-				break;
-			case 'url':
-				$value = esc_url_raw( $value );
-				break;
-			default:
-				$value = 'textarea' === ( isset( $field['type'] ) ? $field['type'] : '' ) ? sanitize_textarea_field( $value ) : sanitize_text_field( $value );
+		if ( 'home' === $editor_page ) {
+			$posted_visibility = isset( $_POST['visibility'] ) && is_array( $_POST['visibility'] ) ? wp_unslash( $_POST['visibility'] ) : array();
+			$visibility        = array();
+			foreach ( chitayka_home_content_sections() as $key => $section ) {
+				$visibility[ $key ] = ! empty( $section['critical'] ) || ! empty( $posted_visibility[ $key ] ) ? 1 : 0;
+			}
+			update_option( 'chitayka_sections_visibility', $visibility, false );
 		}
-
-		set_theme_mod( 'chitayka_' . $key, $value );
 	}
 
-	$active_tab = isset( $_POST['active_tab'] ) ? sanitize_key( wp_unslash( $_POST['active_tab'] ) ) : 'home';
-	wp_safe_redirect(
-		add_query_arg(
-			array(
-				'page'    => 'chitayka-content',
-				'updated' => '1',
-				'tab'     => $active_tab,
-			),
-			admin_url( 'admin.php' )
-		)
+	update_option(
+		'chitayka_content_last_save',
+		array( 'time' => current_time( 'mysql' ), 'user' => get_current_user_id() ),
+		false
 	);
+	wp_safe_redirect( add_query_arg( array( 'page' => $page_slug, 'updated' => '1' ), admin_url( 'admin.php' ) ) );
 	exit;
 }
 add_action( 'admin_post_chitayka_save_content', 'chitayka_save_content_admin' );
@@ -306,11 +398,13 @@ add_action( 'admin_post_chitayka_save_content', 'chitayka_save_content_admin' );
 function chitayka_render_admin_field( $key, $field ) {
 	$value = get_theme_mod( 'chitayka_' . $key, $field['default'] );
 	$type  = isset( $field['type'] ) ? $field['type'] : 'text';
+	$max   = isset( $field['max'] ) ? absint( $field['max'] ) : ( 'textarea' === $type ? 700 : 300 );
 	?>
 	<div class="chitayka-field<?php echo 'image' === $type ? ' chitayka-field--image' : ''; ?>">
 		<label for="chitayka-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $field['label'] ); ?></label>
 		<?php if ( 'textarea' === $type ) : ?>
-			<textarea id="chitayka-<?php echo esc_attr( $key ); ?>" name="chitayka[<?php echo esc_attr( $key ); ?>]" rows="3"><?php echo esc_textarea( $value ); ?></textarea>
+			<textarea id="chitayka-<?php echo esc_attr( $key ); ?>" name="chitayka[<?php echo esc_attr( $key ); ?>]" rows="3" maxlength="<?php echo esc_attr( $max ); ?>" data-counter-source><?php echo esc_textarea( $value ); ?></textarea>
+			<span class="chitayka-counter" data-counter="<?php echo esc_attr( $max ); ?>"></span>
 		<?php elseif ( 'image' === $type ) : ?>
 			<?php $preview = '' !== $value ? $value : $field['fallback']; ?>
 			<div class="chitayka-image" data-image-field>
@@ -322,72 +416,118 @@ function chitayka_render_admin_field( $key, $field ) {
 				</div>
 			</div>
 		<?php else : ?>
-			<input type="text" id="chitayka-<?php echo esc_attr( $key ); ?>" name="chitayka[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( $value ); ?>">
+			<?php $input_type = 'email' === ( isset( $field['sanitize'] ) ? $field['sanitize'] : '' ) ? 'email' : ( 'url' === ( isset( $field['sanitize'] ) ? $field['sanitize'] : '' ) ? 'url' : 'text' ); ?>
+			<input type="<?php echo esc_attr( $input_type ); ?>" id="chitayka-<?php echo esc_attr( $key ); ?>" name="chitayka[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( $value ); ?>" maxlength="<?php echo esc_attr( $max ); ?>" data-counter-source>
+			<span class="chitayka-counter" data-counter="<?php echo esc_attr( $max ); ?>"></span>
 		<?php endif; ?>
 	</div>
 	<?php
 }
 
-/**
- * Страница «Контент сайта».
- */
-function chitayka_render_content_admin() {
-	if ( ! current_user_can( 'edit_theme_options' ) ) {
-		return;
-	}
+/** Выводит заголовок административной страницы и метку последнего сохранения. */
+function chitayka_admin_page_head( $title, $subtitle ) {
+	?>
+	<div class="chitayka-admin__heading">
+		<div><h1><?php echo esc_html( $title ); ?></h1><p><?php echo esc_html( $subtitle ); ?></p></div>
+	</div>
+	<?php if ( isset( $_GET['updated'] ) ) : ?>
+		<?php $last_save = get_option( 'chitayka_content_last_save', array() ); ?>
+		<div class="notice notice-success is-dismissible"><p><strong>Изменения сохранены.</strong><?php echo ! empty( $last_save['time'] ) ? ' ' . esc_html( $last_save['time'] ) . '.' : ''; ?> <a href="<?php echo esc_url( add_query_arg( 'cv', wp_date( 'YmdHi' ), home_url( '/' ) ) ); ?>" target="_blank" rel="noopener">Открыть главную ↗</a></p></div>
+	<?php endif;
+}
 
-	$schema     = chitayka_content_schema_with_gallery( chitayka_content_fields() );
-	$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'home';
-	if ( ! isset( $schema[ $active_tab ] ) ) {
-		$active_tab = 'home';
+/** Страница «Главная страница» по образцу админки LEMESH PRO. */
+function chitayka_render_home_content_admin() {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		wp_die( esc_html__( 'Недостаточно прав.', 'chitayka' ), 403 );
 	}
+	$sections   = chitayka_home_content_sections();
+	$visibility = chitayka_get_sections_visibility();
 	?>
 	<div class="wrap chitayka-admin">
-		<div class="chitayka-admin__heading">
-			<div>
-				<h1>Контент сайта «Читай-ка»</h1>
-				<p>Редактируйте тексты, контакты, цены и фотографии без изменения дизайна.</p>
-			</div>
-			<a class="button button-secondary" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener">Открыть сайт ↗</a>
-		</div>
-
-		<?php if ( isset( $_GET['updated'] ) ) : ?>
-			<div class="notice notice-success is-dismissible"><p>Изменения сохранены и уже отображаются на сайте.</p></div>
-		<?php endif; ?>
-
+		<?php chitayka_admin_page_head( 'Главная страница', 'Блоки расположены в том же порядке, что и на сайте. Можно открыть несколько блоков одновременно.' ); ?>
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-content-form>
 			<input type="hidden" name="action" value="chitayka_save_content">
-			<input type="hidden" name="active_tab" value="<?php echo esc_attr( $active_tab ); ?>" data-active-tab>
+			<input type="hidden" name="editor_page" value="home">
 			<?php wp_nonce_field( 'chitayka_save_content', 'chitayka_content_nonce' ); ?>
+			<div class="chitayka-toolbar">
+				<button class="button button-primary button-hero" type="submit">Сохранить все изменения</button>
+				<a class="button button-hero" href="<?php echo esc_url( add_query_arg( 'cv', wp_date( 'YmdHi' ), home_url( '/' ) ) ); ?>" target="_blank" rel="noopener">Открыть главную ↗</a>
+				<button class="button button-hero" type="button" data-enable-all>Включить все блоки</button>
+				<button class="button button-hero" type="button" data-collapse-all>Развернуть все</button>
+				<span class="chitayka-toolbar__status" data-save-status><i aria-hidden="true"></i> Все изменения сохранены</span>
+			</div>
 
-			<nav class="chitayka-tabs" aria-label="Разделы редактора">
-				<?php foreach ( $schema as $tab_key => $tab ) : ?>
-					<button class="chitayka-tabs__button<?php echo $active_tab === $tab_key ? ' is-active' : ''; ?>" type="button" data-tab="<?php echo esc_attr( $tab_key ); ?>"><?php echo esc_html( $tab['label'] ); ?></button>
-				<?php endforeach; ?>
-			</nav>
-
-			<?php foreach ( $schema as $tab_key => $tab ) : ?>
-				<div class="chitayka-tab<?php echo $active_tab === $tab_key ? ' is-active' : ''; ?>" data-tab-panel="<?php echo esc_attr( $tab_key ); ?>">
-					<?php foreach ( $tab['sections'] as $section ) : ?>
-						<section class="chitayka-panel">
-							<header class="chitayka-panel__head">
-								<h2><?php echo esc_html( $section['title'] ); ?></h2>
-								<?php if ( ! empty( $section['description'] ) ) : ?><p><?php echo esc_html( $section['description'] ); ?></p><?php endif; ?>
-							</header>
-							<div class="chitayka-fields<?php echo 'gallery' === $tab_key ? ' chitayka-fields--gallery' : ''; ?>">
-								<?php foreach ( $section['fields'] as $key => $field ) : ?>
-									<?php chitayka_render_admin_field( $key, $field ); ?>
-								<?php endforeach; ?>
-							</div>
-						</section>
-					<?php endforeach; ?>
-				</div>
+			<?php foreach ( $sections as $section_key => $section ) : ?>
+				<?php $enabled = ! empty( $visibility[ $section_key ] ); ?>
+				<section class="chitayka-card" data-content-card>
+					<header class="chitayka-card__head">
+						<button class="chitayka-card__toggle" type="button" aria-expanded="false" data-card-toggle>
+							<span class="chitayka-card__chevron" aria-hidden="true"></span>
+							<span class="chitayka-card__title"><?php echo esc_html( $section['title'] ); ?></span>
+							<span class="chitayka-card__status <?php echo $enabled ? 'is-on' : 'is-off'; ?>" data-card-status><?php echo $enabled ? 'Включён' : 'Выключен'; ?></span>
+						</button>
+						<div class="chitayka-card__actions">
+							<a href="<?php echo esc_url( home_url( '/#' . $section['anchor'] ) ); ?>" target="_blank" rel="noopener">На сайте ↗</a>
+							<?php if ( empty( $section['critical'] ) ) : ?>
+								<label class="chitayka-switch" title="Показывать блок">
+									<input type="checkbox" name="visibility[<?php echo esc_attr( $section_key ); ?>]" value="1" <?php checked( $enabled ); ?> data-section-visible>
+									<span aria-hidden="true"></span>
+								</label>
+							<?php else : ?>
+								<input type="hidden" name="visibility[<?php echo esc_attr( $section_key ); ?>]" value="1">
+								<small>обязательный</small>
+							<?php endif; ?>
+						</div>
+					</header>
+					<div class="chitayka-card__body" hidden>
+						<p class="chitayka-card__description"><?php echo esc_html( $section['description'] ); ?></p>
+						<div class="chitayka-fields chitayka-fields--<?php echo esc_attr( isset( $section['layout'] ) ? $section['layout'] : $section_key ); ?>">
+							<?php foreach ( $section['fields'] as $key => $field ) : ?><?php chitayka_render_admin_field( $key, $field ); ?><?php endforeach; ?>
+						</div>
+						<footer class="chitayka-card__footer">
+							<button class="button" type="submit" name="reset_section" value="<?php echo esc_attr( $section_key ); ?>" data-reset-section>Восстановить исходные значения блока</button>
+						</footer>
+					</div>
+				</section>
 			<?php endforeach; ?>
 
-			<div class="chitayka-savebar" data-savebar>
-				<p data-save-status><span aria-hidden="true">●</span> Все изменения сохранены</p>
-				<button class="button button-primary button-hero" type="submit">Сохранить изменения</button>
+			<div class="chitayka-toolbar chitayka-toolbar--bottom">
+				<button class="button button-primary button-hero" type="submit">Сохранить все изменения</button>
+				<a class="button button-hero" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener">Открыть главную ↗</a>
 			</div>
+		</form>
+	</div>
+	<?php
+}
+
+/** Страница единых контактов и реквизитов. */
+function chitayka_render_contacts_admin() {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		wp_die( esc_html__( 'Недостаточно прав.', 'chitayka' ), 403 );
+	}
+	$schema = chitayka_content_fields();
+	$section = $schema['contacts']['sections']['contacts'];
+	?>
+	<div class="wrap chitayka-admin">
+		<?php chitayka_admin_page_head( 'Контакты и реквизиты', 'Единые данные используются в шапке, контактах, форме и подвале сайта.' ); ?>
+		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-content-form>
+			<input type="hidden" name="action" value="chitayka_save_content">
+			<input type="hidden" name="editor_page" value="contacts">
+			<?php wp_nonce_field( 'chitayka_save_content', 'chitayka_content_nonce' ); ?>
+			<div class="chitayka-toolbar">
+				<button class="button button-primary button-hero" type="submit">Сохранить все изменения</button>
+				<a class="button button-hero" href="<?php echo esc_url( home_url( '/#contacts' ) ); ?>" target="_blank" rel="noopener">Открыть контакты ↗</a>
+				<span class="chitayka-toolbar__status" data-save-status><i aria-hidden="true"></i> Все изменения сохранены</span>
+			</div>
+			<section class="chitayka-card is-open">
+				<header class="chitayka-card__head"><h2 class="chitayka-card__title"><?php echo esc_html( $section['title'] ); ?></h2></header>
+				<div class="chitayka-card__body">
+					<p class="chitayka-card__description"><?php echo esc_html( $section['description'] ); ?></p>
+					<div class="chitayka-fields"><?php foreach ( $section['fields'] as $key => $field ) : ?><?php chitayka_render_admin_field( $key, $field ); ?><?php endforeach; ?></div>
+				</div>
+			</section>
+			<div class="chitayka-toolbar chitayka-toolbar--bottom"><button class="button button-primary button-hero" type="submit">Сохранить все изменения</button></div>
 		</form>
 	</div>
 	<?php
