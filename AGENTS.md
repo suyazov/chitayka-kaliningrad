@@ -42,8 +42,13 @@ WordPress, кастомная тема `wp-content/themes/chitayka`. Mobile-firs
 ## Production
 - URL: `https://chitayka39.ru/`.
 - Хостинг: виртуальный хостинг Beget; каталог сайта `chitayka39.ru/public_html`.
-- Текущая production-публикация — статическая копия из `preview/`, загружаемая по FTP. Подготовлена WordPress-тема 1.0.0, повторяющая production-дизайн; переключение возможно после установки PHP 7.4+ и создания MySQL в Beget.
+- С 2026-09-09 production работает на WordPress 7.1, PHP 8.3 и MySQL 8.4. Активна кастомная тема `chitayka` 1.0.1.
+- Production web-root: `/home/m/mzibitu3/chitayka39.ru/public_html`.
+- Контакты, тарифы и фотографии редактируются в `Внешний вид → Настроить → Содержимое «Читай-ки»`.
+- Отдельные страницы WordPress: `/politika-konfidencialnosti/` и `/svedeniya-ob-obrazovatelnoj-organizacii/`.
+- Предыдущая статическая версия сохранена для быстрого отката в `/home/m/mzibitu3/chitayka39.ru/public_html.static-before-wordpress-20260909`; отдельный tar-архив — `/home/m/mzibitu3/backups/chitayka39.ru-static-before-wordpress-20260909.tar.gz`.
 - Доступ Beget хранится только в защищённом локальном хранилище `/root/.config/client-access/chitayka39.ru/beget-panel.env`, вне Git.
+- Доступ WordPress и MySQL хранится только в `/root/.config/client-access/chitayka39.ru/wordpress.env` с правами `0600`, вне Git.
 - Перед первой публикацией штатная заглушка Beget сохранена локально в `/root/backups/chitayka39.ru/2026-09-08-before-first-deploy/`.
-- HTTPS активен. Главная, страница сведений, политика и основной CSS проверены ответом HTTP 200 после первой публикации 2026-09-08.
-- Форма на production пока демонстрационная и не отправляет заявки; до рекламного запуска требуется подключить согласованный канал доставки заявок и актуализировать текст политики.
+- HTTPS активен. Главная, страница сведений, политика, основной CSS, WordPress-админка и Customizer проверены после переключения ответом HTTP 200.
+- Форма на production обрабатывается через `admin-post.php`, требует согласие и отправляет заявку на WordPress `admin_email`; honeypot-smoke проверен без отправки письма клиенту.

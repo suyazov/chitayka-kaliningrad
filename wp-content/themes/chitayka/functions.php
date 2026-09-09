@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CHITAYKA_VERSION', '1.0.0' );
+define( 'CHITAYKA_VERSION', '1.0.1' );
 
 add_action(
 	'after_setup_theme',

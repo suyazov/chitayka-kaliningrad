@@ -29,11 +29,15 @@ function chitayka_cta_options() {
  */
 function chitayka_handle_lead() {
 	$back = wp_get_referer() ? wp_get_referer() : home_url( '/' );
+	$back = preg_replace( '/#.*$/', '', $back );
 	$back = remove_query_arg( 'lead', $back );
 
-	$fail = function () use ( $back ) {
-		wp_safe_redirect( add_query_arg( 'lead', 'error', $back ) );
+	$redirect = function ( $status ) use ( $back ) {
+		wp_safe_redirect( add_query_arg( 'lead', $status, $back ) . '#lead-form' );
 		exit;
+	};
+	$fail = function () use ( $redirect ) {
+		$redirect( 'error' );
 	};
 
 	// Nonce.
@@ -43,8 +47,7 @@ function chitayka_handle_lead() {
 
 	// Honeypot: заполнено — это бот, молча «успешно» завершаем.
 	if ( ! empty( $_POST['lead_website'] ) ) {
-		wp_safe_redirect( add_query_arg( 'lead', 'ok', $back ) );
-		exit;
+		$redirect( 'ok' );
 	}
 
 	// Согласие на обработку ПДн.
@@ -77,8 +80,7 @@ function chitayka_handle_lead() {
 
 	$sent = wp_mail( get_option( 'admin_email' ), $subject, $message );
 
-	wp_safe_redirect( add_query_arg( 'lead', $sent ? 'ok' : 'error', $back ) );
-	exit;
+	$redirect( $sent ? 'ok' : 'error' );
 }
 
 add_action( 'admin_post_chitayka_lead', 'chitayka_handle_lead' );
