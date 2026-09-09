@@ -39,6 +39,13 @@ $replacements = array(
 	'{{requisites}}' => esc_html( $requisites ),
 );
 
+foreach ( chitayka_flat_content_fields() as $key => $field ) {
+	if ( 'image' === ( isset( $field['type'] ) ? $field['type'] : '' ) ) {
+		continue;
+	}
+	$replacements[ '{{' . $key . '}}' ] = esc_html( chitayka_option( $key, $field['default'] ) );
+}
+
 $price_defaults = array(
 	'school' => '6 900 ₽', 'reading' => '6 900 ₽', 'development' => '6 900 ₽',
 	'english' => '5 600 ₽', 'calligraphy' => '5 600 ₽', 'art' => '3 900 ₽',

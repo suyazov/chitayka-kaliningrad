@@ -40,18 +40,18 @@
 	<section class="hero" id="top">
 		<div class="container hero__grid">
 			<div class="hero__content">
-				<p class="hero__badge">Калининград · ул. Аксакова 131</p>
-				<h1>Научим ребёнка читать с&nbsp;удовольствием</h1>
-				<p class="hero__lead">Детский центр «Читай-ка»: обучение чтению, подготовка к школе и умная продлёнка для учеников 1–4 классов. Маленькие группы, бережные педагоги, понятный результат.</p>
+				<p class="hero__badge">{{hero_badge}}</p>
+				<h1>{{hero_title}}</h1>
+				<p class="hero__lead">{{hero_lead}}</p>
 				<div class="hero__cta">
 					<a class="btn btn--accent btn--lg" href="#lead-form" data-cta="diagnostika">Бесплатная диагностика</a>
 					<a class="btn btn--ghost btn--lg" href="#lead-form" data-cta="zanyatie">Пробное занятие</a>
 					<a class="btn btn--ghost btn--lg" href="#lead-form" data-cta="den">Пробный день</a>
 				</div>
 				<ul class="hero__points">
-					<li>Группы от 4 лет до 4 класса</li>
-					<li>Диагностика навыков перед стартом</li>
-					<li>Продлёнка до вечера с домашними заданиями</li>
+					<li>{{hero_point_1}}</li>
+					<li>{{hero_point_2}}</li>
+					<li>{{hero_point_3}}</li>
 				</ul>
 			</div>
 			<div class="hero__media">
@@ -63,39 +63,39 @@
 	<section class="section directions" id="directions">
 		<div class="container">
 			<header class="section__head">
-				<p class="section__kicker">Направления в «Читай-ке»</p>
-				<h2>Что мы делаем</h2>
-				<p class="section__sub">Помогаем детям учиться с интересом и радостью каждый день.</p>
+				<p class="section__kicker">{{directions_kicker}}</p>
+				<h2>{{directions_title}}</h2>
+				<p class="section__sub">{{directions_sub}}</p>
 			</header>
 			<div class="directions__grid">
 				<article class="dir-card dir-card--purple">
 					<img class="dir-card__icon" src="assets/icons-v2/book.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Обучение чтению</h3>
-					<p>От первых слогов до беглого осмысленного чтения. Развиваем технику, понимание текста и любовь к книгам.</p>
+					<h3>{{direction_1_title}}</h3>
+					<p>{{direction_1_text}}</p>
 					<a class="dir-card__link" href="#lead-form" data-cta="zanyatie">Записаться на пробное занятие</a>
 				</article>
 				<article class="dir-card dir-card--mint">
 					<img class="dir-card__icon" src="assets/icons-v2/backpack.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Подготовка к школе</h3>
-					<p>Полный курс подготовки к 1 классу: чтение, счёт, логика, речь, письмо и навыки самостоятельности.</p>
+					<h3>{{direction_2_title}}</h3>
+					<p>{{direction_2_text}}</p>
 					<a class="dir-card__link" href="#lead-form" data-cta="diagnostika">Пройти диагностику готовности</a>
 				</article>
 				<article class="dir-card dir-card--coral">
 					<img class="dir-card__icon" src="assets/icons-v2/study.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Умная продлёнка</h3>
-					<p>Продлённый день для школьников 1–4 классов: уроки сделаны, развивающие занятия, прогулки и отдых.</p>
+					<h3>{{direction_3_title}}</h3>
+					<p>{{direction_3_text}}</p>
 					<a class="dir-card__link" href="#prodlenka">Подробнее о продлёнке</a>
 				</article>
 				<article class="dir-card dir-card--yellow">
 					<img class="dir-card__icon" src="assets/icons-v2/palette.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Развитие и творчество</h3>
-					<p>Развиваем мышление, речь, память и воображение через игры, творчество и общение.</p>
+					<h3>{{direction_4_title}}</h3>
+					<p>{{direction_4_text}}</p>
 					<a class="dir-card__link" href="#lead-form" data-cta="zanyatie">Подобрать занятие</a>
 				</article>
 				<article class="dir-card dir-card--care">
 					<img class="dir-card__icon" src="assets/icons-v2/care.webp" alt="" width="480" height="480" loading="lazy">
-					<h3>Забота и поддержка</h3>
-					<p>Маленькие группы, добрые педагоги и внимание к каждому ребёнку и его успехам.</p>
+					<h3>{{direction_5_title}}</h3>
+					<p>{{direction_5_text}}</p>
 					<a class="dir-card__link" href="#advantages">Наши преимущества</a>
 				</article>
 			</div>
@@ -105,9 +105,9 @@
 	<section class="section journey" id="first-visit">
 		<div class="container">
 			<header class="section__head journey__head">
-				<p class="section__kicker">Первое знакомство</p>
-				<h2>Как проходит первое занятие</h2>
-				<p class="section__sub">Спокойно знакомимся, определяем текущий уровень и подбираем формат, в котором ребёнку будет интересно.</p>
+				<p class="section__kicker">{{journey_kicker}}</p>
+				<h2>{{journey_title}}</h2>
+				<p class="section__sub">{{journey_sub}}</p>
 			</header>
 			<div class="journey__path">
 				<article class="journey-card">
@@ -138,8 +138,8 @@
 			<div class="journey__cta">
 				<img src="assets/stickers/mascot-pointing.webp" alt="" width="520" height="520" loading="lazy">
 				<div>
-					<h3>Не знаете, с чего начать?</h3>
-					<p>Начните с бесплатной диагностики — она поможет выбрать программу без догадок.</p>
+					<h3>{{journey_cta_title}}</h3>
+					<p>{{journey_cta_text}}</p>
 				</div>
 				<a class="btn btn--accent" href="#lead-form" data-cta="diagnostika">Пройти диагностику</a>
 			</div>
@@ -149,14 +149,14 @@
 	<section class="section section--tint programs" id="programs">
 		<div class="container">
 			<header class="section__head">
-				<p class="section__kicker">Для каждого возраста</p>
-				<h2>Возрастные программы</h2>
-				<p class="section__sub">Программа подстраивается под возраст и текущий уровень ребёнка — начинаем с бесплатной диагностики.</p>
+				<p class="section__kicker">{{programs_kicker}}</p>
+				<h2>{{programs_title}}</h2>
+				<p class="section__sub">{{programs_sub}}</p>
 			</header>
 			<div class="programs__grid">
 				<article class="program program--yellow">
-					<p class="program__age">4–5 лет</p>
-					<h3>Первые шаги к чтению</h3>
+					<p class="program__age">{{program_1_age}}</p>
+					<h3>{{program_1_title}}</h3>
 					<ul>
 						<li>Звуки, буквы и слоги в игровой форме</li>
 						<li>Развитие речи и словарного запаса</li>
@@ -164,8 +164,8 @@
 					</ul>
 				</article>
 				<article class="program program--mint">
-					<p class="program__age">5–6 лет</p>
-					<h3>Уверенное чтение</h3>
+					<p class="program__age">{{program_2_age}}</p>
+					<h3>{{program_2_title}}</h3>
 					<ul>
 						<li>Чтение слов и коротких текстов</li>
 						<li>Логика, счёт и математические представления</li>
@@ -173,8 +173,8 @@
 					</ul>
 				</article>
 				<article class="program program--purple">
-					<p class="program__age">6–7 лет</p>
-					<h3>Подготовка к школе</h3>
+					<p class="program__age">{{program_3_age}}</p>
+					<h3>{{program_3_title}}</h3>
 					<ul>
 						<li>Беглое чтение и основы письма</li>
 						<li>Счёт, задачи, пространственное мышление</li>
@@ -182,8 +182,8 @@
 					</ul>
 				</article>
 				<article class="program program--coral">
-					<p class="program__age">1–4 класс</p>
-					<h3>Школьникам</h3>
+					<p class="program__age">{{program_4_age}}</p>
+					<h3>{{program_4_title}}</h3>
 					<ul>
 						<li>Техника и скорость чтения, понимание текста</li>
 						<li>Помощь с домашними заданиями на продлёнке</li>
@@ -197,18 +197,18 @@
 	<section class="section prodlenka" id="prodlenka">
 		<div class="container prodlenka__grid">
 			<div class="prodlenka__content">
-				<p class="section__kicker section__kicker--light">Для занятых родителей</p>
-				<h2>Умная продлёнка для 1–4 классов</h2>
-				<p class="prodlenka__lead">Ребёнок под присмотром до вечера: домашние задания выполнены с педагогом, а остальное время — отдых, игры и развивающие занятия в удобном центре на Аксакова 131.</p>
+				<p class="section__kicker section__kicker--light">{{prodlenka_kicker}}</p>
+				<h2>{{prodlenka_title}}</h2>
+				<p class="prodlenka__lead">{{prodlenka_lead}}</p>
 				<div class="prodlenka__shifts">
 					<div class="shift">
-						<h3>Утренняя смена</h3>
-						<p class="shift__time">Для учеников 2-й смены · 08:00–13:30</p>
+						<h3>{{prodlenka_am_title}}</h3>
+						<p class="shift__time">{{prodlenka_am_time}}</p>
 						<p>Принимаем ребёнка утром, завтракаем, выполняем домашние задания, отдыхаем и вовремя провожаем в школу.</p>
 					</div>
 					<div class="shift">
-						<h3>Дневная смена</h3>
-						<p class="shift__time">Для учеников 1-й смены · 12:00–18:00</p>
+						<h3>{{prodlenka_pm_title}}</h3>
+						<p class="shift__time">{{prodlenka_pm_time}}</p>
 						<p>Встречаем после школы, кормим горячим обедом, делаем уроки с педагогом, отдыхаем и играем до прихода родителей.</p>
 					</div>
 				</div>
@@ -238,14 +238,14 @@
 				</figure>
 			</div>
 			<div class="advantages-story__content">
-				<p class="section__kicker">Почему «Читай-ка»</p>
-				<h2>Место, где ребёнка замечают</h2>
-				<p class="advantages-story__lead">Соединяем обучение, игру и поддержку — ребёнок двигается в своём темпе и не боится пробовать.</p>
+				<p class="section__kicker">{{advantages_kicker}}</p>
+				<h2>{{advantages_title}}</h2>
+				<p class="advantages-story__lead">{{advantages_lead}}</p>
 				<div class="advantages-story__list">
-					<article><span>01</span><div><h3>Маленькие группы</h3><p>Педагог видит каждого ребёнка и успевает помочь именно там, где это нужно.</p></div></article>
-					<article><span>02</span><div><h3>Старт с диагностики</h3><p>Сначала определяем уровень, затем предлагаем понятную и посильную программу.</p></div></article>
-					<article><span>03</span><div><h3>Без давления и сравнений</h3><p>Поддерживаем интерес к занятиям и отмечаем личный прогресс ребёнка.</p></div></article>
-					<article><span>04</span><div><h3>Обратная связь родителям</h3><p>Объясняем, что получается и на какие навыки стоит обратить внимание дальше.</p></div></article>
+					<article><span>01</span><div><h3>{{advantage_1_title}}</h3><p>{{advantage_1_text}}</p></div></article>
+					<article><span>02</span><div><h3>{{advantage_2_title}}</h3><p>{{advantage_2_text}}</p></div></article>
+					<article><span>03</span><div><h3>{{advantage_3_title}}</h3><p>{{advantage_3_text}}</p></div></article>
+					<article><span>04</span><div><h3>{{advantage_4_title}}</h3><p>{{advantage_4_text}}</p></div></article>
 				</div>
 				<a class="btn btn--accent" href="#lead-form" data-cta="zanyatie">Познакомиться с центром</a>
 			</div>
@@ -255,9 +255,9 @@
 	<section class="section gallery" id="gallery">
 		<div class="container">
 			<header class="section__head">
-				<p class="section__kicker">Фотогалерея</p>
-				<h2>Наш центр</h2>
-				<p class="section__sub">Занятия, игры и интерьер «Читай-ки» на ул. Аксакова 131 — листайте фотографии.</p>
+				<p class="section__kicker">{{gallery_kicker}}</p>
+				<h2>{{gallery_title}}</h2>
+				<p class="section__sub">{{gallery_sub}}</p>
 			</header>
 			<div class="slider" id="gallerySlider" tabindex="0" role="region" aria-roledescription="слайдер" aria-label="Фотографии детского центра «Читай-ка»">
 				<div class="slider__track">
@@ -328,9 +328,9 @@
 	<section class="section achievements" id="achievements">
 		<div class="container achievements__grid">
 			<div class="achievements__content">
-				<p class="section__kicker">Маленькие победы</p>
-				<h2>Результаты, которыми дети гордятся</h2>
-				<p>Уверенно прочитанный текст, выполненное задание, первая самостоятельная работа или заслуженный диплом — мы замечаем каждый шаг вперёд.</p>
+				<p class="section__kicker">{{achievements_kicker}}</p>
+				<h2>{{achievements_title}}</h2>
+				<p>{{achievements_text}}</p>
 				<ul class="achievements__points">
 					<li>Поддерживаем интерес к обучению</li>
 					<li>Отмечаем личный прогресс ребёнка</li>
@@ -479,9 +479,9 @@
 	<section class="section lead" id="lead-form">
 		<div class="container lead__grid">
 			<div class="lead__content">
-				<p class="section__kicker">Первый шаг</p>
-				<h2>Запишитесь на бесплатную диагностику</h2>
-				<p>Оставьте заявку — мы свяжемся с вами, ответим на вопросы и подберём удобное время для диагностики, пробного занятия или пробного дня.</p>
+				<p class="section__kicker">{{lead_kicker}}</p>
+				<h2>{{lead_title}}</h2>
+				<p>{{lead_text}}</p>
 				<ul class="lead__points">
 					<li>Ответим на вопросы о программах и расписании</li>
 					<li>Подберём группу по возрасту и уровню</li>

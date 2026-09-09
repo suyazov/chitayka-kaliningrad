@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CHITAYKA_VERSION', '1.0.1' );
+define( 'CHITAYKA_VERSION', '1.1.0' );
 
 add_action(
 	'after_setup_theme',
@@ -35,6 +35,24 @@ add_action(
 		wp_enqueue_script( 'chitayka-main', $theme_uri . '/assets/main.js', array(), CHITAYKA_VERSION, true );
 	}
 );
+
+/**
+ * Фирменная иконка сайта, пока в WordPress не выбрана другая Site Icon.
+ */
+function chitayka_favicon_links() {
+	if ( has_site_icon() ) {
+		return;
+	}
+
+	$assets_uri = trailingslashit( get_template_directory_uri() ) . 'assets/';
+	$version    = CHITAYKA_VERSION;
+	echo '<link rel="icon" href="' . esc_url( add_query_arg( 'ver', $version, $assets_uri . 'favicon.ico' ) ) . '" sizes="any">' . "\n";
+	echo '<link rel="icon" href="' . esc_url( add_query_arg( 'ver', $version, $assets_uri . 'favicon-512.png' ) ) . '" type="image/png">' . "\n";
+	echo '<link rel="apple-touch-icon" href="' . esc_url( add_query_arg( 'ver', $version, $assets_uri . 'apple-touch-icon.png' ) ) . '">' . "\n";
+}
+add_action( 'wp_head', 'chitayka_favicon_links', 1 );
+add_action( 'admin_head', 'chitayka_favicon_links', 1 );
+add_action( 'login_head', 'chitayka_favicon_links', 1 );
 
 /**
  * Возвращает настройку темы с безопасным запасным значением.
@@ -98,4 +116,5 @@ function chitayka_render_content_file( $filename ) {
 }
 
 require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/admin-content.php';
 require get_template_directory() . '/inc/lead-form.php';
