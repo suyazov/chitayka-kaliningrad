@@ -1,6 +1,6 @@
 <?php
 /**
- * Форма заявки: рендер + обработка через admin-post.php.
+ * Форма заявки: обработка через admin-post.php.
  * nonce, honeypot, sanitization, согласие на ПДн, wp_mail на admin_email.
  * Заявки в БД не хранятся.
  *
@@ -22,65 +22,6 @@ function chitayka_cta_options() {
 		'zanyatie'    => __( 'Пробное занятие', 'chitayka' ),
 		'den'         => __( 'Пробный день', 'chitayka' ),
 	);
-}
-
-/**
- * Рендер формы заявки.
- *
- * @param string $cta Ключ CTA по умолчанию.
- */
-function chitayka_render_lead_form( $cta = 'diagnostika' ) {
-	$options = chitayka_cta_options();
-	if ( ! isset( $options[ $cta ] ) ) {
-		$cta = 'diagnostika';
-	}
-	$status = isset( $_GET['lead'] ) ? sanitize_key( wp_unslash( $_GET['lead'] ) ) : '';
-	?>
-	<form class="lead-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-		<input type="hidden" name="action" value="chitayka_lead">
-		<?php wp_nonce_field( 'chitayka_lead', 'chitayka_nonce' ); ?>
-
-		<?php if ( 'ok' === $status ) : ?>
-			<p class="lead-form__notice lead-form__notice--ok"><?php esc_html_e( 'Заявка отправлена. Мы свяжемся с вами.', 'chitayka' ); ?></p>
-		<?php elseif ( 'error' === $status ) : ?>
-			<p class="lead-form__notice lead-form__notice--error"><?php esc_html_e( 'Не удалось отправить заявку. Проверьте поля и попробуйте ещё раз.', 'chitayka' ); ?></p>
-		<?php endif; ?>
-
-		<p class="lead-form__field">
-			<label for="lead-name"><?php esc_html_e( 'Ваше имя', 'chitayka' ); ?></label>
-			<input type="text" id="lead-name" name="lead_name" required maxlength="100">
-		</p>
-		<p class="lead-form__field">
-			<label for="lead-phone"><?php esc_html_e( 'Телефон', 'chitayka' ); ?></label>
-			<input type="tel" id="lead-phone" name="lead_phone" required maxlength="30">
-		</p>
-		<p class="lead-form__field">
-			<label for="lead-cta"><?php esc_html_e( 'Что вас интересует', 'chitayka' ); ?></label>
-			<select id="lead-cta" name="lead_cta">
-				<?php foreach ( $options as $key => $label ) : ?>
-					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $cta, $key ); ?>><?php echo esc_html( $label ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		</p>
-
-		<!-- Honeypot: скрытое поле, люди его не заполняют -->
-		<p class="lead-form__hp" aria-hidden="true">
-			<label for="lead-website"><?php esc_html_e( 'Не заполняйте это поле', 'chitayka' ); ?></label>
-			<input type="text" id="lead-website" name="lead_website" tabindex="-1" autocomplete="off">
-		</p>
-
-		<p class="lead-form__consent">
-			<label>
-				<input type="checkbox" name="lead_consent" value="1" required>
-				<?php esc_html_e( 'Согласен(на) на обработку персональных данных', 'chitayka' ); ?>
-			</label>
-		</p>
-
-		<p class="lead-form__submit">
-			<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить заявку', 'chitayka' ); ?></button>
-		</p>
-	</form>
-	<?php
 }
 
 /**

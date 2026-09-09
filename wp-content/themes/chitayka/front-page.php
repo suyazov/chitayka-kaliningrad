@@ -1,6 +1,6 @@
 <?php
 /**
- * Главная страница: hero с 3 CTA, группы, направления, тарифы, форма, контакты.
+ * Главная страница. Разметка хранится отдельно, значения подставляются из Customizer.
  *
  * @package chitayka
  */
@@ -10,93 +10,63 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-?>
 
-<section class="hero">
-	<div class="container">
-		<h1><?php esc_html_e( 'Детский центр «Читай-ка»', 'chitayka' ); ?></h1>
-		<p class="hero__lead"><?php esc_html_e( 'Учим читать с удовольствием. Калининград, ул. Аксакова 131.', 'chitayka' ); ?></p>
-		<div class="hero__cta">
-			<a class="btn btn--primary" href="#lead-form" data-cta="diagnostika"><?php esc_html_e( 'Бесплатная диагностика', 'chitayka' ); ?></a>
-			<a class="btn" href="#lead-form" data-cta="zanyatie"><?php esc_html_e( 'Пробное занятие', 'chitayka' ); ?></a>
-			<a class="btn" href="#lead-form" data-cta="den"><?php esc_html_e( 'Пробный день', 'chitayka' ); ?></a>
-		</div>
-	</div>
-</section>
+$html = file_get_contents( get_template_directory() . '/home.html' );
+if ( false === $html ) {
+	echo '<main class="site-main"><div class="container"><p>Не удалось загрузить шаблон главной страницы.</p></div></main>';
+	get_footer();
+	return;
+}
 
-<section class="groups">
-	<div class="container">
-		<h2><?php esc_html_e( 'Группы', 'chitayka' ); ?></h2>
-		<div class="cards">
-			<div class="card">
-				<h3><?php esc_html_e( '4–6 лет', 'chitayka' ); ?></h3>
-				<p><?php esc_html_e( 'Дошкольная группа: первые шаги в чтении и подготовка к школе.', 'chitayka' ); ?></p>
-			</div>
-			<div class="card">
-				<h3><?php esc_html_e( '7–9 лет', 'chitayka' ); ?></h3>
-				<p><?php esc_html_e( 'Младшие школьники: техника чтения, понимание текста, продлёнка.', 'chitayka' ); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
+$asset_uri  = trailingslashit( get_template_directory_uri() ) . 'assets/';
+$home_uri   = trailingslashit( home_url( '/' ) );
+$phone      = chitayka_option( 'phone', '+7 911 497-33-04' );
+$phone_uri  = preg_replace( '/[^0-9+]/', '', $phone );
+$email      = chitayka_option( 'email', 'clubchitayka@mail.ru' );
+$address    = chitayka_option( 'address', 'Калининград, ул. Аксакова 131' );
+$vk_url     = chitayka_option( 'vk_url', 'https://vk.ru/clubchitayka39' );
+$requisites = chitayka_option( 'lead_requisites', 'ИП Бурмистрова Полина Сергеевна · ИНН 246519367524 · ОГРНИП 325246800146312' );
 
-<section class="directions">
-	<div class="container">
-		<h2><?php esc_html_e( 'Направления', 'chitayka' ); ?></h2>
-		<div class="cards">
-			<div class="card">
-				<h3><?php esc_html_e( 'Обучение чтению', 'chitayka' ); ?></h3>
-				<p><?php esc_html_e( 'От слогов к уверенному чтению и пониманию текста.', 'chitayka' ); ?></p>
-			</div>
-			<div class="card">
-				<h3><?php esc_html_e( 'Подготовка к школе (ПКШ)', 'chitayka' ); ?></h3>
-				<p><?php esc_html_e( 'Комплексная подготовка дошкольников к первому классу.', 'chitayka' ); ?></p>
-			</div>
-			<div class="card">
-				<h3><?php esc_html_e( 'Продлёнка', 'chitayka' ); ?></h3>
-				<p><?php esc_html_e( 'Группа продлённого дня для школьников.', 'chitayka' ); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
+$replacements = array(
+	'assets/' => esc_url( $asset_uri ),
+	'href="/svedeniya-ob-obrazovatelnoj-organizacii/"' => 'href="' . esc_url( $home_uri . 'svedeniya-ob-obrazovatelnoj-organizacii/' ) . '"',
+	'href="/politika-konfidencialnosti/"' => 'href="' . esc_url( $home_uri . 'politika-konfidencialnosti/' ) . '"',
+	'{{phone}}'      => esc_html( $phone ),
+	'{{phone_uri}}'  => esc_attr( $phone_uri ),
+	'{{email}}'      => esc_html( $email ),
+	'{{address}}'    => esc_html( $address ),
+	'{{vk_url}}'     => esc_url( $vk_url ),
+	'{{requisites}}' => esc_html( $requisites ),
+);
 
-<section class="prices">
-	<div class="container">
-		<h2><?php esc_html_e( 'Тарифы', 'chitayka' ); ?></h2>
-		<p class="prices__note"><strong><?php esc_html_e( 'Цены требуют подтверждения актуальности у клиента.', 'chitayka' ); ?></strong></p>
-		<div class="cards">
-			<div class="card">
-				<h3><?php esc_html_e( 'Обучение чтению', 'chitayka' ); ?></h3>
-				<p class="card__price"><?php esc_html_e( 'XXX ₽ / занятие', 'chitayka' ); ?></p>
-			</div>
-			<div class="card">
-				<h3><?php esc_html_e( 'Подготовка к школе', 'chitayka' ); ?></h3>
-				<p class="card__price"><?php esc_html_e( 'XXX ₽ / месяц', 'chitayka' ); ?></p>
-			</div>
-			<div class="card">
-				<h3><?php esc_html_e( 'Продлёнка', 'chitayka' ); ?></h3>
-				<p class="card__price"><?php esc_html_e( 'XXX ₽ / месяц', 'chitayka' ); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
+$price_defaults = array(
+	'school' => '6 900 ₽', 'reading' => '6 900 ₽', 'development' => '6 900 ₽',
+	'english' => '5 600 ₽', 'calligraphy' => '5 600 ₽', 'art' => '3 900 ₽',
+	'neuro' => '1 650 ₽', 'extended_am' => '18 500 ₽', 'extended_pm' => '21 800 ₽',
+	'optimal' => '12 000 ₽', 'homework' => '9 900 ₽', 'one_day' => '2 000 ₽',
+	'events' => '500 ₽', 'wall' => '500 ₽',
+);
 
-<section class="lead" id="lead-form">
-	<div class="container">
-		<h2><?php esc_html_e( 'Оставить заявку', 'chitayka' ); ?></h2>
-		<?php chitayka_render_lead_form( 'diagnostika' ); ?>
-	</div>
-</section>
+foreach ( $price_defaults as $key => $default ) {
+	$replacements[ '{{price_' . $key . '}}' ] = esc_html( chitayka_option( 'price_' . $key, $default ) );
+}
 
-<section class="contacts">
-	<div class="container">
-		<h2><?php esc_html_e( 'Контакты', 'chitayka' ); ?></h2>
-		<p><?php esc_html_e( 'Калининград, ул. Аксакова 131', 'chitayka' ); ?></p>
-		<p><?php esc_html_e( 'Телефон: [ТЕЛЕФОН]', 'chitayka' ); ?></p>
-		<p><?php esc_html_e( 'Email: [EMAIL]', 'chitayka' ); ?></p>
-		<p><?php esc_html_e( 'Мы в соцсетях: [СОЦСЕТИ]', 'chitayka' ); ?></p>
-	</div>
-</section>
+for ( $index = 1; $index <= 14; $index++ ) {
+	$replacements[ '{{gallery_' . $index . '}}' ] = esc_url( chitayka_gallery_image( $index ) );
+}
 
-<?php
+$lead_status = isset( $_GET['lead'] ) ? sanitize_key( wp_unslash( $_GET['lead'] ) ) : '';
+$lead_notice = '';
+if ( 'ok' === $lead_status ) {
+	$lead_notice = '<p class="lead__notice lead__notice--ok">Спасибо! Заявка отправлена. Мы свяжемся с вами.</p>';
+} elseif ( 'error' === $lead_status ) {
+	$lead_notice = '<p class="lead__notice lead__notice--error">Не удалось отправить заявку. Проверьте данные или позвоните нам.</p>';
+}
+
+$replacements['{{form_action}}'] = esc_url( admin_url( 'admin-post.php' ) );
+$replacements['{{form_nonce}}']  = wp_nonce_field( 'chitayka_lead', 'chitayka_nonce', true, false );
+$replacements['{{lead_notice}}'] = $lead_notice;
+
+echo strtr( $html, $replacements ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- dynamic tokens are escaped above.
+
 get_footer();
