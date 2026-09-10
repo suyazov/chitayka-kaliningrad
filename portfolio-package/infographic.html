@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кейс «Читай-ка»</title>
+  <style>
+    :root {
+      --ink: #2b2342;
+      --muted: #6d6486;
+      --purple: #6842d9;
+      --purple-dark: #4d2eb1;
+      --lilac: #f2edff;
+      --mint: #43c7aa;
+      --mint-soft: #eaf9f5;
+      --yellow: #ffd84f;
+      --cream: #fffaf0;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #d9d4e9; font-family: "DejaVu Sans", sans-serif; color: var(--ink); }
+    body { width: 1600px; }
+    .slide {
+      position: relative;
+      width: 1600px;
+      height: 1200px;
+      overflow: hidden;
+      background: #fff;
+      isolation: isolate;
+    }
+    .slide + .slide { margin-top: 40px; }
+    .brand-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .brand-wash {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.89) 48%, rgba(255,255,255,.18) 100%);
+      z-index: -2;
+    }
+    .pad { padding: 72px 82px; }
+    .logo { width: 322px; height: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 54px;
+      color: var(--purple-dark);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 5px; border-radius: 9px; background: var(--yellow); }
+    h1 { margin: 22px 0 24px; max-width: 690px; font-size: 66px; line-height: 1.08; letter-spacing: -.045em; }
+    .lead { margin: 0; max-width: 650px; color: var(--muted); font-size: 25px; line-height: 1.55; }
+    .pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .pill { padding: 12px 18px; border: 1px solid rgba(104,66,217,.2); border-radius: 999px; background: rgba(255,255,255,.82); font-weight: 700; font-size: 17px; }
+    .browser {
+      position: absolute;
+      overflow: hidden;
+      border: 10px solid rgba(255,255,255,.92);
+      border-radius: 34px;
+      background: #fff;
+      box-shadow: 0 34px 80px rgba(68,38,136,.22);
+    }
+    .browser::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 14px;
+      left: 18px;
+      width: 54px;
+      height: 12px;
+      background: radial-gradient(circle at 6px 6px,#ff7c72 0 6px,transparent 7px),radial-gradient(circle at 27px 6px,#ffd34d 0 6px,transparent 7px),radial-gradient(circle at 48px 6px,#4fd1ad 0 6px,transparent 7px);
+    }
+    .browser img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+    .cover-shot { width: 770px; height: 706px; right: 70px; top: 282px; transform: rotate(1.7deg); }
+    .cover-shot img { padding-top: 40px; }
+    .credit { position: absolute; left: 82px; bottom: 50px; font-size: 16px; color: rgba(43,35,66,.64); }
+    .section-title { margin: 14px 0 18px; font-size: 52px; line-height: 1.12; letter-spacing: -.035em; }
+    .section-copy { margin: 0; max-width: 760px; font-size: 21px; line-height: 1.55; color: var(--muted); }
+    .grid-shot { left: 78px; top: 430px; width: 1010px; height: 690px; }
+    .grid-shot img { object-position: top center; padding-top: 40px; }
+    .feature-stack { position: absolute; top: 438px; right: 76px; width: 390px; display: grid; gap: 18px; }
+    .feature {
+      min-height: 135px;
+      padding: 23px 25px;
+      border: 1px solid rgba(104,66,217,.14);
+      border-radius: 25px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 18px 45px rgba(68,38,136,.08);
+    }
+    .feature b { display: block; margin-bottom: 8px; font-size: 20px; }
+    .feature span { color: var(--muted); font-size: 16px; line-height: 1.45; }
+    .feature-icon { display: inline-grid; place-items: center; width: 38px; height: 38px; margin-bottom: 14px; border-radius: 13px; background: var(--lilac); font-size: 21px; }
+    .system-bg { background: linear-gradient(135deg,#fff 0%,#fbf8ff 65%,#effbf7 100%); }
+    .orb { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .75; z-index: -1; }
+    .orb.one { width: 390px; height: 390px; right: -140px; top: -120px; background: #efe7ff; }
+    .orb.two { width: 330px; height: 330px; left: -120px; bottom: -120px; background: #e6f8f2; }
+    .start-shot { left: 72px; top: 92px; width: 785px; height: 1010px; transform: rotate(-1.2deg); }
+    .start-shot img { padding-top: 40px; object-position: top center; }
+    .start-copy { position: absolute; left: 920px; right: 78px; top: 120px; }
+    .start-copy .eyebrow { margin-top: 0; }
+    .points { display: grid; gap: 18px; margin-top: 36px; }
+    .point { position: relative; padding: 22px 24px 22px 66px; border: 1px solid rgba(104,66,217,.14); border-radius: 22px; background: rgba(255,255,255,.92); box-shadow: 0 15px 34px rgba(68,38,136,.07); color: var(--muted); font-size: 18px; line-height: 1.45; }
+    .point::before { content: ""; position: absolute; left: 24px; top: 25px; width: 20px; height: 20px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 7px #fff7cf; }
+    .point b { display: block; margin-bottom: 5px; color: var(--ink); font-size: 20px; }
+    .work-bg { background: linear-gradient(135deg,#fff 0%,#f5f0ff 63%,#edfaf6 100%); }
+    .work-shot { left: 72px; top: 444px; width: 1030px; height: 650px; }
+    .work-shot img { padding-top: 40px; object-position: top left; }
+    .work-stack { position: absolute; right: 72px; top: 450px; width: 410px; display: grid; gap: 18px; }
+    .adaptive-bg { background: linear-gradient(145deg,#f5f0ff 0%,#fff 55%,#effbf8 100%); }
+    .phone {
+      position: absolute;
+      left: 82px;
+      top: 250px;
+      width: 390px;
+      height: 844px;
+      border: 12px solid #fff;
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(71,42,148,.22);
+      background: #fff;
+    }
+    .phone::before { content: ""; position: absolute; z-index: 2; top: 10px; left: 50%; width: 98px; height: 23px; transform: translateX(-50%); border-radius: 20px; background: #302643; }
+    .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .admin-shot { left: 510px; top: 470px; width: 1010px; height: 570px; }
+    .admin-shot img { padding-top: 40px; object-position: top left; }
+    .adaptive-copy { position: absolute; left: 540px; top: 80px; right: 80px; }
+    .capabilities { display: flex; gap: 14px; margin-top: 30px; }
+    .capability { flex: 1; min-height: 105px; padding: 18px 20px; border-radius: 20px; background: #fff; box-shadow: 0 12px 32px rgba(75,45,151,.08); }
+    .capability b { display: block; font-size: 25px; color: var(--purple); }
+    .capability span { color: var(--muted); font-size: 15px; line-height: 1.35; }
+    .result-bg { background: linear-gradient(135deg,#5a35c4 0%,#744cdf 58%,#4f31ad 100%); color: #fff; }
+    .result-bg::before { content: ""; position: absolute; width: 560px; height: 560px; right: -170px; top: -220px; border-radius: 50%; background: rgba(255,255,255,.1); }
+    .result-bg .eyebrow { color: #fff6b5; }
+    .result-bg .section-copy { color: rgba(255,255,255,.78); }
+    .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 34px; }
+    .metric { padding: 22px 24px; border: 1px solid rgba(255,255,255,.2); border-radius: 24px; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); }
+    .metric strong { display: block; font-size: 43px; line-height: 1; color: #fff; }
+    .metric span { display: block; margin-top: 10px; font-size: 16px; line-height: 1.35; color: rgba(255,255,255,.8); }
+    .result-shots { position: absolute; left: 82px; right: 82px; bottom: 74px; height: 575px; }
+    .result-shot { position: absolute; overflow: hidden; border: 8px solid #fff; border-radius: 28px; background: #fff; box-shadow: 0 30px 70px rgba(35,17,86,.34); }
+    .result-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .result-shot.one { left: 0; top: 34px; width: 1080px; height: 520px; transform: rotate(-1deg); }
+    .result-shot.two { right: 18px; top: 0; width: 338px; height: 570px; transform: rotate(2deg); border-radius: 42px; }
+    .result-shot.two img { object-position: top center; }
+    .result-credit { color: rgba(255,255,255,.64); }
+  </style>
+</head>
+<body>
+  <section class="slide pad" id="slide-cover">
+    <img class="brand-bg" src="generated-brand-background.png" alt="">
+    <div class="brand-wash"></div>
+    <img class="logo" src="brand-logo.png" alt="Читай-ка">
+    <div class="eyebrow">Кейс · детский центр · Калининград</div>
+    <h1>Сайт, который говорит языком бренда</h1>
+    <p class="lead">От структуры и фирменной графики до адаптивного WordPress и удобного редактора для владельца.</p>
+    <div class="pills">
+      <span class="pill">Дизайн и UX</span>
+      <span class="pill">WordPress</span>
+      <span class="pill">Mobile-first</span>
+    </div>
+    <div class="browser cover-shot"><img src="screenshots/01-hero-desktop.png" alt="Первый экран сайта"></div>
+    <div class="credit">ИТ-Бизнес-партнер · Суязов Артем · chitayka39.ru</div>
+  </section>
+
+  <section class="slide system-bg" id="slide-start">
+    <span class="orb one"></span><span class="orb two"></span>
+    <div class="browser start-shot"><img src="screenshots/start-before.png" alt="Исходная версия сайта"></div>
+    <div class="start-copy">
+      <div class="eyebrow">Исходная ситуация</div>
+      <h2 class="section-title">Материалы были.<br>Единой системы — нет</h2>
+      <p class="section-copy">Логотип, персонаж, тексты и фотографии требовалось собрать в цельный клиентский сайт.</p>
+      <div class="points">
+        <div class="point"><b>Композиция требовала переработки</b>Разделы не держали единый визуальный ритм, часть блоков оставалась пустой.</div>
+        <div class="point"><b>Нужна была полная структура</b>Галерея, карта, тарифы, формы и обязательные страницы должны работать вместе.</div>
+        <div class="point"><b>Редактирование не было готово</b>Заказчику требовалось менять контент самостоятельно, без правок кода.</div>
+      </div>
+    </div>
+    <div class="credit">ИТ-Бизнес-партнер · Суязов Артем</div>
+  </section>
+
+  <section class="slide pad work-bg" id="slide-work">
+    <span class="orb one"></span><span class="orb two"></span>
+    <div class="eyebrow">Решение и реализация</div>
+    <h2 class="section-title">Фирменный дизайн +<br>удобное управление в WordPress</h2>
+    <p class="section-copy">Интерфейс собран вокруг официального персонажа, реальных материалов центра и понятного пути родителя к записи.</p>
+    <div class="browser work-shot"><img src="screenshots/08-wordpress-editor.png" alt="Редактор WordPress"></div>
+    <div class="work-stack">
+      <div class="feature"><span class="feature-icon">✦</span><b>Дизайн-система</b><span>Персонаж, фирменная палитра и единый набор 3D-иконок.</span></div>
+      <div class="feature"><span class="feature-icon">▣</span><b>Кастомная тема</b><span>Mobile-first вёрстка, формы, карта, галерея и юридические страницы.</span></div>
+      <div class="feature"><span class="feature-icon">↕</span><b>Редактор ЧИТАЙ-КА</b><span>10 секций по порядку страницы, видимость блоков и резервные копии.</span></div>
+    </div>
+    <div class="credit">ИТ-Бизнес-партнер · Суязов Артем</div>
+  </section>
+
+  <section class="slide pad result-bg" id="slide-result">
+    <div class="eyebrow">Результат</div>
+    <h2 class="section-title">Сайт запущен<br>на домене клиента</h2>
+    <p class="section-copy">Итоговая версия работает по HTTPS, адаптирована под смартфоны и готова к самостоятельному обновлению.</p>
+    <div class="metrics">
+      <div class="metric"><strong>3</strong><span>сценария записи для разных запросов родителей</span></div>
+      <div class="metric"><strong>14</strong><span>реальных фотографий в галерее</span></div>
+      <div class="metric"><strong>10</strong><span>редактируемых секций главной страницы</span></div>
+      <div class="metric"><strong>2</strong><span>отдельные обязательные информационные страницы</span></div>
+    </div>
+    <div class="result-shots">
+      <div class="result-shot one"><img src="screenshots/01-hero-desktop.png" alt="Итоговый первый экран"></div>
+      <div class="result-shot two"><img src="screenshots/06-mobile-hero.png" alt="Мобильная версия"></div>
+    </div>
+    <div class="credit result-credit">ИТ-Бизнес-партнер · Суязов Артем · chitayka39.ru</div>
+  </section>
+</body>
+</html>
