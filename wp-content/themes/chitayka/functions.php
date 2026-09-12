@@ -117,4 +117,5 @@ function chitayka_render_content_file( $filename ) {
 
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/admin-content.php';
+require get_template_directory() . '/inc/alfacrm.php';
 require get_template_directory() . '/inc/lead-form.php';

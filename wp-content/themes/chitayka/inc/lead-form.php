@@ -1,7 +1,7 @@
 <?php
 /**
  * Форма заявки: обработка через admin-post.php.
- * nonce, honeypot, sanitization, согласие на ПДн, wp_mail на admin_email.
+ * nonce, honeypot, sanitization, согласие на ПДн, ALFACRM с почтовым fallback.
  * Заявки в БД не хранятся.
  *
  * @package chitayka
@@ -78,6 +78,17 @@ function chitayka_handle_lead() {
 		current_time( 'mysql' )
 	);
 
+	$crm_result = chitayka_alfacrm_create_lead( $name, $phone, $options[ $cta ], $back );
+	if ( ! is_wp_error( $crm_result ) ) {
+		$redirect( 'ok' );
+	}
+
+	// Не записываем имя, телефон или ответ ALFACRM в журнал.
+	if ( 'alfacrm_not_configured' !== $crm_result->get_error_code() ) {
+		error_log( '[chitayka] ALFACRM lead delivery failed: ' . $crm_result->get_error_code() ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+	}
+
+	// Если CRM недоступна или ещё не настроена, сохраняем прежний канал доставки.
 	$sent = wp_mail( get_option( 'admin_email' ), $subject, $message );
 
 	$redirect( $sent ? 'ok' : 'error' );
